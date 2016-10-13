@@ -29,7 +29,12 @@ $(function(){
     return opponentPlayer;
   }
 
-  pickOpponent();
+  $('.good-guy').click(function(event){
+    event.preventDefault();
+    var characterName = $(this).data('name');
+    userPlayer = _.filter(goodGuysArray, {'name': characterName})[0];
+    console.log(userPlayer);
+  });
 
 
 });
