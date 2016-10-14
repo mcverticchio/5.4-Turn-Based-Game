@@ -14,6 +14,8 @@ function Character(config){
     this.health += 10;
   };
   this.potionStrongAttack = function(){};
+  this.numOfHealthPotion = 1;
+  this.numOfStrongAttackPotion = 1;
 }
 
 //#####################################################################
