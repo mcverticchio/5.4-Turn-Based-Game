@@ -60,4 +60,46 @@ $(function(){
   function playingScreen(){
     alert('playingScreen has been triggered.');
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function minorAttack(){
+    window.setTimeout(userPlayer.attack(), 500);
+    window.setTimeout(opponentPlayer.decreaseHealth(), 700);
+    window.setTimeout($('#opponent-health-bar').css("width", opponentPlayer.health + '%'), 720);
+  }
 });

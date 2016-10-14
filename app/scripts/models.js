@@ -3,7 +3,9 @@ var $ = require('jquery');
 function Character(config){
   $.extend(this, config);
   this.health = 100;
-  this.attack = function(){};
+  this.attack = function(){
+    console.log("Expelliarmus!");
+  };
   this.decreaseHealth = function(){
     this.health -= 10;
   };
