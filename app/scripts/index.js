@@ -7,16 +7,21 @@ $(function(){
       opponentPlayer;
 
   var opponentMinorAttack = function(){
-    window.setTimeout(opponentPlayer.weakAttack(), 500);
-    window.setTimeout(userPlayer.decreaseHealth(), 700);
-    window.setTimeout($('#user-health-bar').css("width", userPlayer.health + '%'), 720);
+    // window.setTimeout(opponentPlayer.weakAttack(), 500);
+    // window.setTimeout(userPlayer.decreaseHealth(), 700);
+    // window.setTimeout($('#user-health-bar').css("width", userPlayer.health + '%'), 720);
+    opponentPlayer.weakAttack();
+    userPlayer.decreaseHealth();
+    console.log("Opponent minor attack");
   };
 
   var opponentHealthPotion = function(){
+    opponentPlayer.increaseHealth();
     console.log('Health Potion taken by opponent!');
   };
 
   var opponentStrongAttack = function(){
+    userPlayer.decreaseHealthStrong();
     console.log('Opponent strong attack!');
   };
 
@@ -84,6 +89,11 @@ $(function(){
   $('#attack').on('click', function(event){
     event.preventDefault();
     minorAttack();
+    console.log(userPlayer);
+    console.log(opponentPlayer);
+    var opponentAttack = randomOpponentAttack();
+    (opponentAttack)();
+    checkWin();
   });
 
   $('#increase-health').on('click', function(event){
@@ -92,10 +102,23 @@ $(function(){
     increaseUserHealth();
   });
 
+<<<<<<< e7e7e52a39cc15718170c769bcb5749d7bab5a5a
   $('#strong-attack').on('click', function(event){
     event.preventDefault();
     strongAttackCheck();
     userStrongAttack();
+=======
+    console.log(userPlayer);
+
+    $('.potion-buttons').on('click', function(event){
+      event.preventDefault();
+      if($(this).is('#increase-health')){
+        increaseUserHealth();
+      }else if ($(this).is('#strong-attack')){
+        userStrongAttack();
+      }
+    });
+>>>>>>> Working on things after speaking with Dan.
   });
 
 
@@ -118,8 +141,8 @@ $(function(){
   }
 
   function minorAttack(){
-    window.setTimeout(userPlayer.weakAttack(), 500);
-    window.setTimeout(opponentPlayer.decreaseHealth(), 700);
+    userPlayer.weakAttack();
+    opponentPlayer.decreaseHealth();
     // window.setTimeout($('#opponent-health-bar').css("width", opponentPlayer.health + '%'), 720);
   }
 
@@ -173,10 +196,15 @@ $(function(){
 
   function randomOpponentAttack(){
     var opponentAttack = badGuyActions[Math.floor(Math.random()*badGuyActions.length)];
-    console.log("This is " + opponentAttack);
+    console.log(opponentAttack);
     return opponentAttack;
   }
 
-randomOpponentAttack();
-
+  function checkWin(){
+    if(userPlayer.health <= 0){
+      alert('You lose!');
+    }else if(opponentPlayer.health <= 0){
+      alert('You win!');
+    }
+  }
 }());
