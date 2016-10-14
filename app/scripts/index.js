@@ -24,16 +24,11 @@ $(function(){
     new models.BadGuy({name:'Frankenstein', imageURL: 'http://unsplash.it/40/40'}),
   ];
 
-  function pickOpponent(){
-    opponentPlayer = badGuysArray[Math.floor(Math.random()*badGuysArray.length)];
-    return opponentPlayer;
-  }
+
 
   $('.good-guy').click(function(event){
     event.preventDefault();
-    var characterName = $(this).data('name');
-    userPlayer = _.filter(goodGuysArray, {'name': characterName})[0];
-    console.log(userPlayer);
+    setUserPlayer();
   });
 
   $('#select-button').on('click', function(event){
@@ -57,12 +52,6 @@ $(function(){
     });
   });
 
-  function playingScreen(){
-    alert('playingScreen has been triggered.');
-    pickOpponent();
-    console.log(opponentPlayer);
-  }
-
   $('#potion').on('click', function(event){
     event.preventDefault();
 
@@ -71,7 +60,7 @@ $(function(){
     }else{
       $('#increase-health').show();
     }
-    
+
     if(userPlayer.numOfStrongAttackPotion <= 0){
 
       $('#strong-attack').hide();
@@ -105,10 +94,32 @@ $(function(){
     });
   });
 
+  //#####################################################################
+  //Functions library
+  //#####################################################################
+
+  function pickOpponent(){
+    opponentPlayer = badGuysArray[Math.floor(Math.random()*badGuysArray.length)];
+    return opponentPlayer;
+  }
+
+  function playingScreen(){
+    alert('playingScreen has been triggered.');
+    pickOpponent();
+    console.log(opponentPlayer);
+  }
+
   function minorAttack(){
     window.setTimeout(userPlayer.weakAttack(), 500);
     window.setTimeout(opponentPlayer.decreaseHealth(), 700);
     window.setTimeout($('#opponent-health-bar').css("width", opponentPlayer.health + '%'), 720);
   }
+
+  function setUserPlayer(){
+    var characterName = $(this).data('name');
+    userPlayer = _.filter(goodGuysArray, {'name': characterName})[0];
+  }
+
+
 
 });
