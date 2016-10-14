@@ -3,7 +3,7 @@ var $ = require('jquery');
 function Character(config){
   $.extend(this, config);
   this.health = 100;
-  this.attack = function(){
+  this.weakAttack = function(){
     console.log("Expelliarmus!");
   };
   this.decreaseHealth = function(){
@@ -12,10 +12,10 @@ function Character(config){
   this.decreaseHealthStrong = function(){
     this.health -= 30;
   };
-  this.potionHealth = function(){
+  this.increaseHealth = function(){
     this.health += 10;
   };
-  this.potionStrongAttack = function(){};
+  this.StrongAttack = function(){};
   this.numOfHealthPotion = 1;
   this.numOfStrongAttackPotion = 1;
 }

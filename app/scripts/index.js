@@ -98,7 +98,7 @@ $(function(){
 
 
   function minorAttack(){
-    window.setTimeout(userPlayer.attack(), 500);
+    window.setTimeout(userPlayer.weakAttack(), 500);
     window.setTimeout(opponentPlayer.decreaseHealth(), 700);
     window.setTimeout($('#opponent-health-bar').css("width", opponentPlayer.health + '%'), 720);
   }
