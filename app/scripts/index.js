@@ -10,7 +10,7 @@ $(function(){
     new models.GoodGuy({name:'Harry', imageURL: 'http://unsplash.it/40/40'}),
     new models.GoodGuy({name:'Hermione', imageURL: 'http://unsplash.it/40/40'}),
     new models.GoodGuy({name:'Hagrid', imageURL: 'http://unsplash.it/40/40'}),
-    new models.GoodGuy({name:'Professor Lupin', imageURL: 'http://unsplash.it/40/40'}),
+    new models.GoodGuy({name:'Neville', imageURL: 'http://unsplash.it/40/40'}),
     new models.GoodGuy({name:'Professor Dumbledore', imageURL: 'http://unsplash.it/40/40'}),
   ];
 
@@ -144,38 +144,6 @@ $('#HPMusic').play();
     $(this).hide();
   }
 
-  function healthPotionCheck(){
-    if(userPlayer.numOfHealthPotion <= 1){
-      $('#increase-health').hide();
-    }else{
-      $('#increase-health').show();
-    }
-  }
-
-  function strongAttackCheck(){
-    if(userPlayer.numOfStrongAttackPotion <= 0){
-      $('#strong-attack').hide();
-    }else{
-      $('#strong-attack').show();
-    }
-  }
-
-  function increaseUserHealth(){
-    userPlayer.increaseHealth();
-    userPlayer.numOfHealthPotion -= 1;
-  }
-
-  function userStrongAttack(){
-    opponentPlayer.decreaseHealthStrong();
-    userPlayer.numOfStrongAttackPotion -= 1;
-    $('#strong-attack').hide();
-  }
-
-  // function randomOpponentAttack(){
-  //   var opponentAttack = badGuyActions[Math.floor(Math.random()*badGuyActions.length)];
-  //   return opponentAttack;
-  // }
-// var checkWinVar = true;
   function checkWin(){
     if(userPlayer.health <= 0){
       alert('You lose!');
