@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var _ = require('underscore');
 
 function Character(config){
   $.extend(this, config);
@@ -15,7 +16,13 @@ function Character(config){
   this.increaseHealth = function(){
     this.health += 10;
   };
-  this.StrongAttack = function(){};
+  this.strongAttack = function(){};
+  this.useHealthPotion = function(){
+    this.numOfHealthPotion -= 1;
+  };
+  this.useStrongAttackPotion = function(){
+    this.numOfStrongAttackPotion -= 1;
+  };
   this.numOfHealthPotion = 1;
   this.numOfStrongAttackPotion = 1;
 }
@@ -41,6 +48,39 @@ function BadGuy(config){
 }
 
 BadGuy.prototype = new Character();
+BadGuy.prototype.attack = function(character){
+  var availableAttacks = ['opponentMinorAttack'];
+
+  if(this.numOfHealthPotion > 0){
+    availableAttacks.push('opponentHealthPotion');
+  }
+
+  if(this.numOfStrongAttackPotion > 0){
+    availableAttacks.push('opponentStrongAttack');
+  }
+
+  console.log(availableAttacks);
+
+  var selectedAttack = availableAttacks[_.random(0,availableAttacks.length-1)];
+
+  this[selectedAttack](character);
+};
+
+BadGuy.prototype.opponentMinorAttack = function(character){
+  this.weakAttack();
+  character.decreaseHealth();
+  console.log("Opponent minor attack");
+};
+BadGuy.prototype.opponentHealthPotion = function(character){
+  this.increaseHealth();
+  this.useHealthPotion();
+  console.log('Health Potion taken by opponent!');
+};
+BadGuy.prototype.opponentStrongAttack = function(character){
+  character.decreaseHealthStrong();
+  this.useStrongAttackPotion();
+  console.log('Opponent strong attack!');
+};
 
 //#####################################################################
 //Exporting

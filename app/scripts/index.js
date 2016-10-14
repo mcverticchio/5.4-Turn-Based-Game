@@ -6,25 +6,6 @@ $(function(){
   var userPlayer,
       opponentPlayer;
 
-  var opponentMinorAttack = function(){
-    // window.setTimeout(opponentPlayer.weakAttack(), 500);
-    // window.setTimeout(userPlayer.decreaseHealth(), 700);
-    // window.setTimeout($('#user-health-bar').css("width", userPlayer.health + '%'), 720);
-    opponentPlayer.weakAttack();
-    userPlayer.decreaseHealth();
-    console.log("Opponent minor attack");
-  };
-
-  var opponentHealthPotion = function(){
-    opponentPlayer.increaseHealth();
-    console.log('Health Potion taken by opponent!');
-  };
-
-  var opponentStrongAttack = function(){
-    userPlayer.decreaseHealthStrong();
-    console.log('Opponent strong attack!');
-  };
-
   var goodGuysArray = [
     new models.GoodGuy({name:'Harry', imageURL: 'http://unsplash.it/40/40'}),
     new models.GoodGuy({name:'Hermione', imageURL: 'http://unsplash.it/40/40'}),
@@ -41,12 +22,6 @@ $(function(){
     new models.BadGuy({name:'Ghost', imageURL: 'http://unsplash.it/40/40'}),
     new models.BadGuy({name:'Spider', imageURL: 'http://unsplash.it/40/40'}),
     new models.BadGuy({name:'Frankenstein', imageURL: 'http://unsplash.it/40/40'}),
-  ];
-
-  var badGuyActions = [
-    opponentMinorAttack,
-    opponentHealthPotion,
-    opponentStrongAttack
   ];
 
 //#####################################################################
@@ -88,12 +63,9 @@ $(function(){
 
   $('#attack').on('click', function(event){
     event.preventDefault();
+    userPlayer.weakAttack();
     opponentPlayer.decreaseHealth();
-    minorAttack();
-    console.log(userPlayer);
-    console.log(opponentPlayer);
-    var opponentAttack = randomOpponentAttack();
-    (opponentAttack)();
+    opponentPlayer.attack(userPlayer);
     checkWin();
   });
 
@@ -169,21 +141,18 @@ $(function(){
   function increaseUserHealth(){
     userPlayer.increaseHealth();
     userPlayer.numOfHealthPotion -= 1;
-    console.log(userPlayer);
   }
 
   function userStrongAttack(){
     opponentPlayer.decreaseHealthStrong();
     userPlayer.numOfStrongAttackPotion -= 1;
-    console.log(opponentPlayer);
     $('#strong-attack').hide();
   }
 
-  function randomOpponentAttack(){
-    var opponentAttack = badGuyActions[Math.floor(Math.random()*badGuyActions.length)];
-    console.log(opponentAttack);
-    return opponentAttack;
-  }
+  // function randomOpponentAttack(){
+  //   var opponentAttack = badGuyActions[Math.floor(Math.random()*badGuyActions.length)];
+  //   return opponentAttack;
+  // }
 
   function checkWin(){
     if(userPlayer.health <= 0){
