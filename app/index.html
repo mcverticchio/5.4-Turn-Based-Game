@@ -7,23 +7,20 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
+
+<div class="openingScreen">
     <div class="container">
       <div class="row">
+        <audio src="sounds/HP.ogg" id="HPMusic"></audio>
         <div class="col-md-12">
-          <ul class="good-guys-list">
-            <li class="good-guy" data-name="Harry">Harry</li>
-            <li class="good-guy" data-name="Hermione">Hermione</li>
-            <li class="good-guy" data-name="Hagrid">Hagrid</li>
-            <li class="good-guy" data-name="Professor Lupin">Lupin</li>
-            <li class="good-guy" data-name="Professor Dumbledore">Dumbledore</li>
-          </ul>
-
-          <button id="select-button">Select</button>
-          <button id="start-game" class="start-buttons" style="display:none">Start</button>
-          <button id="choose-another-player" class="start-buttons" style="display:none">Choose a different player</button>
+          <h1>The Wizarding World of Harry Potter
+            <br> vs.
+            <br> Halloween </h1>
         </div>
       </div>
     </div>
+</div>
+
 
     <h1>Hello World</h1>
     <h2>Our Turn Based Game!</h2>
@@ -38,7 +35,19 @@
   </div>
 
 
+    <div class="container">
+      <div class="row js-selection-screen">
+        <!-- Populates from javascript -->
+      <</div>
+    </div>
 
+
+
+    <!-- <div class="container">
+      <div class="row js-fight-screen"> -->
+        <!-- Populates from javascript -->
+      <!-- </div>
+    </div> -->
 
     <script src="js/bundle.js"></script>
   </body>
