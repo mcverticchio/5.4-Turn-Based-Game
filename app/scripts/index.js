@@ -88,6 +88,7 @@ $(function(){
 
   $('#attack').on('click', function(event){
     event.preventDefault();
+    opponentPlayer.decreaseHealth();
     minorAttack();
     console.log(userPlayer);
     console.log(opponentPlayer);
@@ -96,18 +97,13 @@ $(function(){
     checkWin();
   });
 
-  $('#increase-health').on('click', function(event){
+  $('#potion').on('click', function(event){
     event.preventDefault();
-    healthPotionCheck();
-    increaseUserHealth();
-  });
 
-<<<<<<< e7e7e52a39cc15718170c769bcb5749d7bab5a5a
-  $('#strong-attack').on('click', function(event){
-    event.preventDefault();
+    healthPotionCheck();
     strongAttackCheck();
-    userStrongAttack();
-=======
+    $(this).hide();
+
     console.log(userPlayer);
 
     $('.potion-buttons').on('click', function(event){
@@ -118,9 +114,7 @@ $(function(){
         userStrongAttack();
       }
     });
->>>>>>> Working on things after speaking with Dan.
   });
-
 
   //#####################################################################
   //Functions library
@@ -128,9 +122,6 @@ $(function(){
 
   function pickOpponent(){
     opponentPlayer = badGuysArray[Math.floor(Math.random()*badGuysArray.length)];
-    // if (userPlayer === undefined){
-    //
-    // }
     return opponentPlayer;
   }
 
@@ -155,25 +146,23 @@ $(function(){
   function changeCharacter(){
     $('#start-game').hide();
     $('#select-button').show();
-    $('#choose-another-player').hide();
+    $('#choose-another-player').show();
     $(this).hide();
-  }
-
-  function strongAttackCheck(){
-    if(userPlayer.numOfStrongAttackPotion <= 0){
-      $('#strong-attack').hide();
-
-    }else{
-      $('#strong-attack').show();
-    }
   }
 
   function healthPotionCheck(){
     if(userPlayer.numOfHealthPotion <= 1){
       $('#increase-health').hide();
-      // $('#increase-health').disabled = true;
     }else{
       $('#increase-health').show();
+    }
+  }
+
+  function strongAttackCheck(){
+    if(userPlayer.numOfStrongAttackPotion <= 0){
+      $('#strong-attack').hide();
+    }else{
+      $('#strong-attack').show();
     }
   }
 
@@ -181,16 +170,12 @@ $(function(){
     userPlayer.increaseHealth();
     userPlayer.numOfHealthPotion -= 1;
     console.log(userPlayer);
-
-
-
   }
 
   function userStrongAttack(){
     opponentPlayer.decreaseHealthStrong();
     userPlayer.numOfStrongAttackPotion -= 1;
     console.log(opponentPlayer);
-
     $('#strong-attack').hide();
   }
 
