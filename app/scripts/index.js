@@ -168,8 +168,8 @@ $(function(){
   }
 
   function userStrongAttack(){
-    opponentPlayer.decreaseHealthStrong();
     userPlayer.numOfStrongAttackPotion -= 1;
+    opponentPlayer.decreaseHealthStrong();
 
     console.log(opponentPlayer);
     $('#increase-health').hide();
