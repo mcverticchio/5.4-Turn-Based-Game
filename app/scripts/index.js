@@ -72,12 +72,13 @@ $('#HPMusic').play();
   //Fight Screen
   //#####################################################################
 
+  var checkWinVar;
   $('#attack').on('click', function(event){
     event.preventDefault();
-    var checkWinVar = true;
+    checkWinVar = true;
     opponentPlayer.decreaseHealth();
     checkWin();
-    if(checkWinVar === false){return;}
+    if(checkWinVar !== true){return;}
     opponentPlayer.attack(userPlayer);
     console.log(userPlayer);
     console.log(opponentPlayer);
@@ -87,11 +88,11 @@ $('#HPMusic').play();
 
   $('.potion-buttons').on('click', function(event){
     event.preventDefault();
-    var checkWinVar = true;
+    checkWinVar = true;
     if($(this).is('#increase-health')){
       userPlayer.increaseHealth();
       checkWin();
-      if(checkWinVar === false){return;}
+      if(checkWinVar !== true){return;}
       opponentPlayer.attack(userPlayer);
       console.log(userPlayer);
       console.log(opponentPlayer);
@@ -100,11 +101,10 @@ $('#HPMusic').play();
         $(this).hide();
       }
     }else if ($(this).is('#strong-attack')){
-      checkWinVar = true;
       opponentPlayer.decreaseHealthStrong();
       userPlayer.strongAttack();
       checkWin();
-      if(checkWinVar === false){return;}
+      if(checkWinVar !== true){return;}
       opponentPlayer.attack(userPlayer);
       console.log(userPlayer);
       console.log(opponentPlayer);
@@ -130,11 +130,6 @@ $('#HPMusic').play();
     console.log(opponentPlayer);
   }
 
-  function minorAttack(){
-    userPlayer.weakAttack();
-    opponentPlayer.decreaseHealth();
-    // window.setTimeout($('#opponent-health-bar').css("width", opponentPlayer.health + '%'), 720);
-  }
 
   function showStartButtons(){
     $('#start-game').show();
