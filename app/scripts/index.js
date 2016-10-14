@@ -24,7 +24,13 @@ $(function(){
     new models.BadGuy({name:'Frankenstein', imageURL: 'http://unsplash.it/40/40'}),
   ];
 
+//#####################################################################
+//Begin game logic
+//#####################################################################
 
+  //#####################################################################
+  //Start Screen
+  //#####################################################################
 
   $('.good-guy').click(function(event){
     event.preventDefault();
@@ -33,63 +39,35 @@ $(function(){
 
   $('#select-button').on('click', function(event){
     event.preventDefault();
-    $('#start-game').show();
-    $('#choose-another-player').show();
-    $(this).hide();
+    showStartButtons();
     $('.start-buttons').on('click', function(event){
       event.preventDefault();
       if($(this).is('#start-game')){
-        if(userPlayer === undefined){
-          alert('Please choose a player!');
-          return;
-        }
-        playingScreen();              //WRITE PLAYING SCREEN FUNCTION!
-      }else if ($(this).is('#choose-another-player')){
-        $('#start-game').hide();
-        $('#select-button').show();
-        $(this).hide();
+        userPlayerCheck();
+        playingScreen();
+      }else if($(this).is('#choose-another-player')){
+        changeCharacter();
       }
     });
   });
 
+  //#####################################################################
+  //Fight Screen
+  //#####################################################################
+
   $('#potion').on('click', function(event){
     event.preventDefault();
 
-    if(userPlayer.numOfHealthPotion <= 0){
-      $('#increase-health').hide();
-    }else{
-      $('#increase-health').show();
-    }
-
-    if(userPlayer.numOfStrongAttackPotion <= 0){
-
-      $('#strong-attack').hide();
-    }else{
-      $('#strong-attack').show();
-    }
-
+    healthPotionCheck();
+    strongAttackCheck();
     $(this).hide();
 
     $('.potion-buttons').on('click', function(event){
       event.preventDefault();
       if($(this).is('#increase-health')){
-        userPlayer.increaseHealth();
-        userPlayer.numOfHealthPotion -= 1;
-
-        console.log(userPlayer);
-
-        $('#increase-health').hide();
-        $('#strong-attack').hide();
-        $('#potion').show();
-
+        increaseUserHealth();
       }else if ($(this).is('#strong-attack')){
-        opponentPlayer.decreaseHealthStrong();
-        userPlayer.numOfStrongAttackPotion -= 1;
-
-        console.log(opponentPlayer);
-        $('#increase-health').hide();
-        $('#strong-attack').hide();
-        $('#potion').show();
+        userStrongAttack();
       }
     });
   });
@@ -120,6 +98,60 @@ $(function(){
     userPlayer = _.filter(goodGuysArray, {'name': characterName})[0];
   }
 
+  function showStartButtons(){
+    $('#start-game').show();
+    $('#choose-another-player').show();
+    $(this).hide();
+  }
 
+  function userPlayerCheck(){
+    if(userPlayer === undefined){
+      alert('Please choose a player!');
+      return;
+    }
+  }
 
-});
+  function changeCharacter(){
+    $('#start-game').hide();
+    $('#select-button').show();
+    $(this).hide();
+  }
+
+  function healthPotionCheck(){
+    if(userPlayer.numOfHealthPotion <= 0){
+      $('#increase-health').hide();
+    }else{
+      $('#increase-health').show();
+    }
+  }
+
+  function strongAttackCheck(){
+    if(userPlayer.numOfStrongAttackPotion <= 0){
+      $('#strong-attack').hide();
+    }else{
+      $('#strong-attack').show();
+    }
+  }
+
+  function increaseUserHealth(){
+    userPlayer.increaseHealth();
+    userPlayer.numOfHealthPotion -= 1;
+
+    console.log(userPlayer);
+
+    $('#increase-health').hide();
+    $('#strong-attack').hide();
+    $('#potion').show();
+  }
+
+  function userStrongAttack(){
+    opponentPlayer.decreaseHealthStrong();
+    userPlayer.numOfStrongAttackPotion -= 1;
+
+    console.log(opponentPlayer);
+    $('#increase-health').hide();
+    $('#strong-attack').hide();
+    $('#potion').show();
+  }
+
+}());
