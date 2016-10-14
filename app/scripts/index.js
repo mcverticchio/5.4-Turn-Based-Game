@@ -36,5 +36,28 @@ $(function(){
     console.log(userPlayer);
   });
 
+  $('#select-button').on('click', function(event){
+    event.preventDefault();
+    $('#start-game').show();
+    $('#choose-another-player').show();
+    $(this).hide();
+    $('.start-buttons').on('click', function(event){
+      event.preventDefault();
+      if($(this).is('#start-game')){
+        if(userPlayer === undefined){
+          alert('Please choose a player!');
+          return;
+        }
+        playingScreen();              //WRITE PLAYING SCREEN FUNCTION!
+      }else if ($(this).is('#choose-another-player')){
+        $('#start-game').hide();
+        $('#select-button').show();
+        $(this).hide();
+      }
+    });
+  });
 
+  function playingScreen(){
+    alert('playingScreen has been triggered.');
+  }
 });
