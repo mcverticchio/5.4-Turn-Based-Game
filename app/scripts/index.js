@@ -59,24 +59,28 @@ $(function(){
 
   function playingScreen(){
     alert('playingScreen has been triggered.');
-
+    pickOpponent();
+    console.log(opponentPlayer);
   }
 
   $('#potion').on('click', function(event){
     event.preventDefault();
-    if(userPlayer.numOfHealthPotion === 0){
+
+    if(userPlayer.numOfHealthPotion <= 0){
       $('#increase-health').hide();
     }else{
       $('#increase-health').show();
     }
+    
+    if(userPlayer.numOfStrongAttackPotion <= 0){
 
-    if(userPlayer.numOfStrongAttackPotion === 0){
       $('#strong-attack').hide();
     }else{
       $('#strong-attack').show();
     }
 
     $(this).hide();
+
     $('.potion-buttons').on('click', function(event){
       event.preventDefault();
       if($(this).is('#increase-health')){
@@ -88,9 +92,12 @@ $(function(){
         $('#increase-health').hide();
         $('#strong-attack').hide();
         $('#potion').show();
+
       }else if ($(this).is('#strong-attack')){
-        // decreaseHealthStrong();
-        console.log("STRONG ATTACK");
+        opponentPlayer.decreaseHealthStrong();
+        userPlayer.numOfStrongAttackPotion -= 1;
+
+        console.log(opponentPlayer);
         $('#increase-health').hide();
         $('#strong-attack').hide();
         $('#potion').show();
