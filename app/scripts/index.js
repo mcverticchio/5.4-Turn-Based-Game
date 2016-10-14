@@ -63,29 +63,45 @@ $(function(){
 
   $('#attack').on('click', function(event){
     event.preventDefault();
-    userPlayer.weakAttack();
+    var checkWinVar = true;
     opponentPlayer.decreaseHealth();
+    checkWin();
+    if(checkWinVar === false){return;}
     opponentPlayer.attack(userPlayer);
+    console.log(userPlayer);
+    console.log(opponentPlayer);
     checkWin();
   });
 
-  $('#potion').on('click', function(event){
+
+  $('.potion-buttons').on('click', function(event){
     event.preventDefault();
-
-    healthPotionCheck();
-    strongAttackCheck();
-    $(this).hide();
-
-    console.log(userPlayer);
-
-    $('.potion-buttons').on('click', function(event){
-      event.preventDefault();
-      if($(this).is('#increase-health')){
-        increaseUserHealth();
-      }else if ($(this).is('#strong-attack')){
-        userStrongAttack();
+    var checkWinVar = true;
+    if($(this).is('#increase-health')){
+      userPlayer.increaseHealth();
+      checkWin();
+      if(checkWinVar === false){return;}
+      opponentPlayer.attack(userPlayer);
+      console.log(userPlayer);
+      console.log(opponentPlayer);
+      checkWin();
+      if(userPlayer.numOfHealthPotion < 1){
+        $(this).hide();
       }
-    });
+    }else if ($(this).is('#strong-attack')){
+      checkWinVar = true;
+      opponentPlayer.decreaseHealthStrong();
+      userPlayer.strongAttack();
+      checkWin();
+      if(checkWinVar === false){return;}
+      opponentPlayer.attack(userPlayer);
+      console.log(userPlayer);
+      console.log(opponentPlayer);
+      checkWin();
+      if(userPlayer.numOfStrongAttackPotion < 1){
+        $(this).hide();
+      }
+    }
   });
 
   //#####################################################################
@@ -153,12 +169,16 @@ $(function(){
   //   var opponentAttack = badGuyActions[Math.floor(Math.random()*badGuyActions.length)];
   //   return opponentAttack;
   // }
-
+// var checkWinVar = true;
   function checkWin(){
     if(userPlayer.health <= 0){
       alert('You lose!');
+      checkWinVar = false;
+      return;
     }else if(opponentPlayer.health <= 0){
       alert('You win!');
+      checkWinVar = false;
+      return;
     }
   }
 }());
