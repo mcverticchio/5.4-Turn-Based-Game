@@ -6,6 +6,20 @@ $(function(){
   var userPlayer,
       opponentPlayer;
 
+  var opponentMinorAttack = function(){
+    window.setTimeout(opponentPlayer.weakAttack(), 500);
+    window.setTimeout(userPlayer.decreaseHealth(), 700);
+    window.setTimeout($('#user-health-bar').css("width", userPlayer.health + '%'), 720);
+  };
+
+  var opponentHealthPotion = function(){
+    console.log('Health Potion taken by opponent!');
+  };
+
+  var opponentStrongAttack = function(){
+    console.log('Opponent strong attack!');
+  };
+
   var goodGuysArray = [
     new models.GoodGuy({name:'Harry', imageURL: 'http://unsplash.it/40/40'}),
     new models.GoodGuy({name:'Hermione', imageURL: 'http://unsplash.it/40/40'}),
@@ -24,6 +38,12 @@ $(function(){
     new models.BadGuy({name:'Frankenstein', imageURL: 'http://unsplash.it/40/40'}),
   ];
 
+  var badGuyActions = [
+    opponentMinorAttack,
+    opponentHealthPotion,
+    opponentStrongAttack
+  ];
+
 //#####################################################################
 //Begin game logic
 //#####################################################################
@@ -34,7 +54,10 @@ $(function(){
 
   $('.good-guy').click(function(event){
     event.preventDefault();
-    setUserPlayer();
+    var characterName = $(this).data('name');
+    userPlayer = _.filter(goodGuysArray, {'name': characterName})[0];
+    console.log(userPlayer);
+    return userPlayer;
   });
 
   $('#select-button').on('click', function(event){
@@ -54,6 +77,11 @@ $(function(){
   //#####################################################################
   //Fight Screen
   //#####################################################################
+
+  $('#attack').on('click', function(event){
+    event.preventDefault();
+    minorAttack();
+  });
 
   $('#potion').on('click', function(event){
     event.preventDefault();
@@ -90,12 +118,7 @@ $(function(){
   function minorAttack(){
     window.setTimeout(userPlayer.weakAttack(), 500);
     window.setTimeout(opponentPlayer.decreaseHealth(), 700);
-    window.setTimeout($('#opponent-health-bar').css("width", opponentPlayer.health + '%'), 720);
-  }
-
-  function setUserPlayer(){
-    var characterName = $(this).data('name');
-    userPlayer = _.filter(goodGuysArray, {'name': characterName})[0];
+    // window.setTimeout($('#opponent-health-bar').css("width", opponentPlayer.health + '%'), 720);
   }
 
   function showStartButtons(){
@@ -153,5 +176,13 @@ $(function(){
     $('#strong-attack').hide();
     $('#potion').show();
   }
+
+  function randomOpponentAttack(){
+    var opponentAttack = badGuyActions[Math.floor(Math.random()*badGuyActions.length)];
+    console.log("This is " + opponentAttack);
+    return opponentAttack;
+  }
+
+randomOpponentAttack();
 
 }());
