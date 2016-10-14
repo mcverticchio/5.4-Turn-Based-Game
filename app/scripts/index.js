@@ -66,7 +66,10 @@ $(function(){
     $('.start-buttons').on('click', function(event){
       event.preventDefault();
       if($(this).is('#start-game')){
-        userPlayerCheck();
+        if(userPlayer === undefined){
+          alert('Please choose a player!');
+          return;
+        }
         playingScreen();
       }else if($(this).is('#choose-another-player')){
         changeCharacter();
@@ -83,22 +86,18 @@ $(function(){
     minorAttack();
   });
 
-  $('#potion').on('click', function(event){
+  $('#increase-health').on('click', function(event){
     event.preventDefault();
-
     healthPotionCheck();
-    strongAttackCheck();
-    $(this).hide();
-
-    $('.potion-buttons').on('click', function(event){
-      event.preventDefault();
-      if($(this).is('#increase-health')){
-        increaseUserHealth();
-      }else if ($(this).is('#strong-attack')){
-        userStrongAttack();
-      }
-    });
+    increaseUserHealth();
   });
+
+  $('#strong-attack').on('click', function(event){
+    event.preventDefault();
+    strongAttackCheck();
+    userStrongAttack();
+  });
+
 
   //#####################################################################
   //Functions library
@@ -106,6 +105,9 @@ $(function(){
 
   function pickOpponent(){
     opponentPlayer = badGuysArray[Math.floor(Math.random()*badGuysArray.length)];
+    // if (userPlayer === undefined){
+    //
+    // }
     return opponentPlayer;
   }
 
@@ -127,54 +129,46 @@ $(function(){
     $(this).hide();
   }
 
-  function userPlayerCheck(){
-    if(userPlayer === undefined){
-      alert('Please choose a player!');
-      return;
-    }
-  }
-
   function changeCharacter(){
     $('#start-game').hide();
     $('#select-button').show();
+    $('#choose-another-player').hide();
     $(this).hide();
-  }
-
-  function healthPotionCheck(){
-    if(userPlayer.numOfHealthPotion <= 0){
-      $('#increase-health').hide();
-    }else{
-      $('#increase-health').show();
-    }
   }
 
   function strongAttackCheck(){
     if(userPlayer.numOfStrongAttackPotion <= 0){
       $('#strong-attack').hide();
+
     }else{
       $('#strong-attack').show();
+    }
+  }
+
+  function healthPotionCheck(){
+    if(userPlayer.numOfHealthPotion <= 1){
+      $('#increase-health').hide();
+      // $('#increase-health').disabled = true;
+    }else{
+      $('#increase-health').show();
     }
   }
 
   function increaseUserHealth(){
     userPlayer.increaseHealth();
     userPlayer.numOfHealthPotion -= 1;
-
     console.log(userPlayer);
 
-    $('#increase-health').hide();
-    $('#strong-attack').hide();
-    $('#potion').show();
+
+
   }
 
   function userStrongAttack(){
-    userPlayer.numOfStrongAttackPotion -= 1;
     opponentPlayer.decreaseHealthStrong();
-
+    userPlayer.numOfStrongAttackPotion -= 1;
     console.log(opponentPlayer);
-    $('#increase-health').hide();
+
     $('#strong-attack').hide();
-    $('#potion').show();
   }
 
   function randomOpponentAttack(){
