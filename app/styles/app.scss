@@ -36,6 +36,7 @@ img {
   background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg') no-repeat center center fixed;    background-size: cover;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  overflow: hidden;
 }
 
 h1{
@@ -73,6 +74,15 @@ html{
   margin-top: 15px;
 }
 
+#select-button{
+  margin-left: 530px;
+}
+#choose-another-player{
+  margin-left: 430px;
+}
+#start-game{
+  margin-left: 537px;
+}
 
 #attack{
   @include buttonDesign();
