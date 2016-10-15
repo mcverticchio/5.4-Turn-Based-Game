@@ -28,7 +28,7 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
-setTimeout(fade_out, 5000);
+setTimeout(fade_out, 1000);
 
 function fade_out() {
   $(".openingScreen").fadeOut().empty();
@@ -116,6 +116,12 @@ function fade_out() {
     }
   });
 
+  $('#replayGame').on('click', function(event){
+    event.preventDefault();
+    $(".fightScreen").hide();
+    $(".openingScreen").show();
+  });
+
   //#####################################################################
   //Functions library
   //#####################################################################
@@ -130,6 +136,28 @@ function fade_out() {
     pickOpponent();
     $(".selectionScreen").fadeOut().empty();
     $(".fightScreen").show();
+      // if(opponentPlayer === badGuysArray[0]){
+      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
+      //   $(".fightScreen").show();
+      // }
+      // if(opponentPlayer === badGuysArray[1]){
+      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
+      // }
+      // if(opponentPlayer === badGuysArray[2]){
+      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
+      // }
+      // if(opponentPlayer === badGuysArray[3]){
+      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
+      // }
+      // if(opponentPlayer === badGuysArray[4]){
+      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
+      // }
+      // if(opponentPlayer === badGuysArray[5]){
+      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
+      // }
+      // else{
+      //   alert('no luck');
+      // }
     console.log(opponentPlayer);
   }
 
@@ -151,11 +179,14 @@ function fade_out() {
     if(userPlayer.health <= 0){
       alert('You lose!');
       checkWinVar = false;
+      $('#replayGame').show();
       return;
     }else if(opponentPlayer.health <= 0){
       alert('You win!');
       checkWinVar = false;
+      $('#replayGame').show();
       return;
     }
   }
+
 }());

@@ -5,6 +5,21 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 // Import Bootstrap
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
+@mixin buttonDesign(){
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  color: orange;
+  border: 1px solid $buttonGradientBottom;
+  border-radius: 5px;
+  background: -webkit-linear-gradient($buttonGradientBottom, $buttonGradientTop);
+  background: -o-linear-gradient($buttonGradientBottom, $buttonGradientTop);
+  background: linear-gradient($buttonGradientBottom, $buttonGradientTop);
+  box-shadow:2px 2px 2px #888888;
+}
+
+$buttonGradientTop: #002966;
+$buttonGradientBottom: #e6f0ff;
 
 *,
 *::before,
@@ -16,17 +31,54 @@ img {
   max-width: 100%;
 }
 
-.openingScreen {
-  background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 640px;
+
+.openingScreen{
+  background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg') no-repeat center center fixed;    background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 h1{
   color: orange;
   text-align: center;
+  font-family: 'Bungee Shade';
+  line-height: 5em;
+  padding-bottom: 30px;
+  // #HP{
+  // font-family: 'Orbitron', sans-serif;
+  // }
+}
 
+#select-button{
+  @include buttonDesign();
+  // margin-left: 520px;
+  margin-top: 15px;
+  display: block;
+  // margin-left: 550px;
+}
+#start-game,
+#choose-another-player{
+  @include buttonDesign();
+  display: block;
+  margin-top: 15px;
+}
+
+
+#attack{
+  @include buttonDesign();
+}
+#strong-attack{
+  @include buttonDesign();
+}
+#increase-health{
+  @include buttonDesign();
+}
+
+
+#replayGame {
+  @include buttonDesign();
+  margin-top: 200px;
+  margin-left: 500px;
 }
