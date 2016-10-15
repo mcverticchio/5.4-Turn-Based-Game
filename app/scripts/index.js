@@ -29,14 +29,15 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
-setTimeout(fade_out, 1000);
+setTimeout(fade_out, 10000);
 
 function fade_out() {
   $(".openingScreen").fadeOut().empty();
   $(".selectionScreen").show();
 }
 
-// $('#HPMusic').play();
+
+$('#HPMusic').get(0).play();
 // $('#start').on('click', function() {
 //     $('#buzzer').get(0).play();
 // });
