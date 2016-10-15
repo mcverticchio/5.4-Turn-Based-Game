@@ -1,6 +1,7 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var models = require('./models');
+var listTemplate = require('../templates/listTemplate.hbs');
 
 $(function(){
   var userPlayer,
@@ -16,12 +17,12 @@ $(function(){
 
   var badGuysArray = [
     new models.BadGuy({name:'Clown', imageURL: 'http://unsplash.it/40/40'}),
-    new models.BadGuy({name:'Zombie', imageURL: 'http://unsplash.it/40/40'}),
-    new models.BadGuy({name:'Werewolf', imageURL: 'http://unsplash.it/40/40'}),
-    new models.BadGuy({name:'Dracula', imageURL: 'http://unsplash.it/40/40'}),
+    new models.BadGuy({name:'Zombie', imageURL: 'http://onefreemindblog.files.wordpress.com/2013/05/18870965-cartoon-illustration-of-a-ghoulish-undid-green-zombie-in-tattered-clothing-with-big-eye-isolated-on.jpg'}),
+    new models.BadGuy({name:'Werewolf', imageURL: 'http://vignette3.wikia.nocookie.net/batman/images/1/10/Anthony_Romulus.jpg/revision/latest?cb=20110803232007'}),
+    new models.BadGuy({name:'Dracula', imageURL: 'http://ep.yimg.com/ay/incrediblegifts/cartoon-dracula-cardboard-cutout-life-size-standup-10.jpg'}),
     new models.BadGuy({name:'Ghost', imageURL: 'http://unsplash.it/40/40'}),
-    new models.BadGuy({name:'Spider', imageURL: 'http://unsplash.it/40/40'}),
-    new models.BadGuy({name:'Frankenstein', imageURL: 'http://unsplash.it/40/40'}),
+    new models.BadGuy({name:'Spider', imageURL: 'http://cliparts.co/cliparts/di4/oko/di4okoXbT.jpg'}),
+    new models.BadGuy({name:'Frankenstein', imageURL: 'http://clipartix.com/wp-content/uploads/2016/10/Frankenstein-cartoon-images-clip-art.jpg'}),
   ];
 
 //#####################################################################
