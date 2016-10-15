@@ -119,7 +119,7 @@ function fade_out() {
   $('#replayGame').on('click', function(event){
     event.preventDefault();
     $(".fightScreen").hide();
-    $(".openingScreen").show();
+    location.reload();
   });
 
   //#####################################################################
