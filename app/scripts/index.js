@@ -8,11 +8,11 @@ $(function(){
       opponentPlayer;
 
   var goodGuysArray = [
-    new models.GoodGuy({name:'Harry', imageURL: 'http://unsplash.it/40/40'}),
-    new models.GoodGuy({name:'Hermione', imageURL: 'http://unsplash.it/40/40'}),
-    new models.GoodGuy({name:'Hagrid', imageURL: 'http://unsplash.it/40/40'}),
-    new models.GoodGuy({name:'Neville', imageURL: 'http://unsplash.it/40/40'}),
-    new models.GoodGuy({name:'Professor Dumbledore', imageURL: 'http://unsplash.it/40/40'}),
+    new models.GoodGuy({name:'Harry', imageURL: 'images/harry.png'}),
+    new models.GoodGuy({name:'Hermione', imageURL: 'images/hermione.png'}),
+    new models.GoodGuy({name:'Hagrid', imageURL: 'images/hagrid.png'}),
+    new models.GoodGuy({name:'Neville', imageURL: 'images/neville.png'}),
+    new models.GoodGuy({name:'Professor Dumbledore', imageURL: 'images/dumbledore.png'}),
   ];
 
   var badGuysArray = [
@@ -26,10 +26,15 @@ $(function(){
   ];
 
   var context = {
-   'badGuysArray': badGuysArray
+   'badGuysArray': badGuysArray,
  }
 
+  var secondContext ={
+    'goodGuysArray': goodGuysArray
+  }
+
  $('.js-badGuysArray').html(listTemplate(context));
+ $('.js-goodGuysArray').html(listTemplate(secondContext));
 
   var randomBackground;
 
@@ -45,7 +50,7 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
-  setTimeout(fade_out, 5000);
+  setTimeout(fade_out, 1000);
 
   function fade_out() {
     $(".openingScreen").fadeOut().empty();

@@ -1,12 +1,8 @@
+{{#each goodGuysArray}}
+  <img class="js-good-guy" src="{{imageURL}}" alt="{{name}}" data-goodGuysArray-name="{{name}}">
+{{/each}}
+
 
 {{#each badGuysArray}}
-
-<div class="col-md-6">
   <img class="js-bad-guy" src="{{imageURL}}" alt="{{name}}" data-badGuysArray-name="{{name}}">
-</div>
-
-<!-- <div class="col-md-6">
-  <img class="js-good-guy" src="{{imageURL}}" alt="{{name}}" data-goodGuysArray-name="{{name}}">
-</div> -->
-
 {{/each}}
