@@ -32,13 +32,14 @@ setTimeout(fade_out, 5000);
 
 function fade_out() {
   $(".openingScreen").fadeOut().empty();
+  $(".selectionScreen").show();
 }
 
-$('#HPMusic').play();
-
+// $('#HPMusic').play();
 // $('#start').on('click', function() {
 //     $('#buzzer').get(0).play();
 // });
+
   //#####################################################################
   //Start Screen
   //#####################################################################
@@ -125,8 +126,10 @@ $('#HPMusic').play();
   }
 
   function playingScreen(){
-    alert('playingScreen has been triggered.');
+    // alert('playingScreen has been triggered.');
     pickOpponent();
+    $(".selectionScreen").fadeOut().empty();
+    $(".fightScreen").show();
     console.log(opponentPlayer);
   }
 
