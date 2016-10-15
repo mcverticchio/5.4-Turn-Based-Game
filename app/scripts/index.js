@@ -16,25 +16,25 @@ $(function(){
   ];
 
   var badGuysArray = [
-    new models.BadGuy({name:'Clown', imageURL: 'http://unsplash.it/40/40'}),
+    new models.BadGuy({name:'Clown', imageURL: 'http://vectortoons.com/wp-content/uploads/2015/08/creepy-clown-collection-3-009-270x400.jpg'}),
     new models.BadGuy({name:'Zombie', imageURL: 'http://onefreemindblog.files.wordpress.com/2013/05/18870965-cartoon-illustration-of-a-ghoulish-undid-green-zombie-in-tattered-clothing-with-big-eye-isolated-on.jpg'}),
     new models.BadGuy({name:'Werewolf', imageURL: 'http://vignette3.wikia.nocookie.net/batman/images/1/10/Anthony_Romulus.jpg/revision/latest?cb=20110803232007'}),
     new models.BadGuy({name:'Dracula', imageURL: 'http://ep.yimg.com/ay/incrediblegifts/cartoon-dracula-cardboard-cutout-life-size-standup-10.jpg'}),
-    new models.BadGuy({name:'Ghost', imageURL: 'http://unsplash.it/40/40'}),
+    new models.BadGuy({name:'Ghost', imageURL: 'images/EvilGhost.png'}),
     new models.BadGuy({name:'Spider', imageURL: 'http://cliparts.co/cliparts/di4/oko/di4okoXbT.jpg'}),
     new models.BadGuy({name:'Frankenstein', imageURL: 'http://clipartix.com/wp-content/uploads/2016/10/Frankenstein-cartoon-images-clip-art.jpg'}),
   ];
 
   var context = {
-   'badGuysArray': badGuysArray,
+   'badGuysArray' : badGuysArray
  }
+    $('.js-badGuysArray').html(listTemplate(context));
 
   var secondContext ={
     'goodGuysArray': goodGuysArray
   }
+    $('.js-goodGuysArray').html(listTemplate(secondContext)).show();
 
- $('.js-badGuysArray').html(listTemplate(context));
- $('.js-goodGuysArray').html(listTemplate(secondContext));
 
   var randomBackground;
 
