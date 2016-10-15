@@ -25,22 +25,35 @@ $(function(){
     new models.BadGuy({name:'Frankenstein', imageURL: 'http://clipartix.com/wp-content/uploads/2016/10/Frankenstein-cartoon-images-clip-art.jpg'}),
   ];
 
+  var context = {
+   'badGuysArray': badGuysArray
+ }
+
+ $('.js-badGuysArray').html(listTemplate(context));
+
+  var randomBackground;
+
+  var backgrounds = [
+    ({imageURL: 'http://2.bp.blogspot.com/-8xufGJljK4Q/TokaX6U_edI/AAAAAAAAAyY/hJkLAAodTVs/s1600/cobweb-wallpaper-7-731096.jpg'}),
+    ({imageURL: 'https://s-media-cache-ak0.pinimg.com/originals/d1/b6/13/d1b613129846bf595ffe5b5a1bd767d9.jpg'}),
+    ({imageURL: 'http://img02.deviantart.net/d273/i/2013/311/1/1/pig_cemetery_background_by_riverkpocc-d6tcm33.png'}),
+    ({imageURL: 'http://img11.deviantart.net/9f0c/i/2012/352/c/a/laboratory__animation_bg_by_zerahoc-d5of62p.png'}),
+    ({imageURL: 'http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg'})
+  ];
+
 //#####################################################################
 //Begin game logic
 //#####################################################################
 
-setTimeout(fade_out, 5000);
+  setTimeout(fade_out, 5000);
 
-function fade_out() {
-  $(".openingScreen").fadeOut().empty();
-  $(".selectionScreen").show();
-}
+  function fade_out() {
+    $(".openingScreen").fadeOut().empty();
+    $(".selectionScreen").show();
+  }
 
+  $('#HPMusic').get(0).play();
 
-$('#HPMusic').get(0).play();
-// $('#start').on('click', function() {
-//     $('#buzzer').get(0).play();
-// });
 
   //#####################################################################
   //Start Screen
@@ -137,7 +150,8 @@ $('#HPMusic').get(0).play();
     // alert('playingScreen has been triggered.');
     pickOpponent();
     $(".selectionScreen").fadeOut().empty();
-    $(".fightScreen").show();
+    showFightScreen();
+    // $(".fightScreen").show();
       // if(opponentPlayer === badGuysArray[0]){
       //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
       //   $(".fightScreen").show();
@@ -161,6 +175,12 @@ $('#HPMusic').get(0).play();
       //   alert('no luck');
       // }
     console.log(opponentPlayer);
+  }
+
+  function showFightScreen (){
+    randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+    $(".fightScreen").css("background", "randomBackground")
+    $(".fightScreen").show()
   }
 
 
