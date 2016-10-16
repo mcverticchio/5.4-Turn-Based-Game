@@ -1,3 +1,7 @@
-{{#each userPlayer}}
+{{#each goodGuysArray}}
+<li class="good-guy" data-name="{{name}}">
   <img class="js-good-guy" src="{{imageURL}}" alt="{{name}}" data-goodGuysArray-name="{{name}}">
+  <p class="good-guy-name">{{name}}</p>
+  <p class="good-guy-description">{{description}}</p>
+</li>
 {{/each}}

@@ -80,21 +80,38 @@ html{
   background-size: 100% 100%;
 }
 
-#carousel-hp-characters {
-  width: 65%;
+.good-guys-list {
+  width: 80%;
   margin: 0 auto;
 
-  .item {
-    height: 180px;
+  li {
+    width: 19%;
+    margin: 3px 0;
+    border: 1px solid rgba(0,0,0,0);
+    border-radius: 3px;
   }
 
   img {
+    display: block;
     margin: 0 auto;
   }
 
-  .carousel-caption {
-    bottom: 20px;
+  .good-guy-name {
+    text-align: center;
+    font-family: 'HPFont';
+    color: orange;
   }
+
+  .good-guy-description {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+
+  }
+}
+
+.good-guys-list li:hover {
+    border: 1px solid white;
+    border-radius: 3px;
 }
 
 #select-button{

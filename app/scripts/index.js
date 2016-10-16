@@ -2,18 +2,19 @@ var $ = require('jquery');
 var _ = require('underscore');
 var models = require('./models');
 var goodGuysTemplate = require('../templates/goodGuysTemplate.hbs');
-var badGuysTemplate= require('../templates/badGuysTemplate.hbs');
+var badGuysTemplate = require('../templates/badGuysTemplate.hbs');
+var listTemplate = require('../templates/listTemplate.hbs');
 
 $(function(){
   var userPlayer,
       opponentPlayer;
 
   var goodGuysArray = [
-    new models.GoodGuy({name:'Harry', imageURL: 'images/harry.png'}),
-    new models.GoodGuy({name:'Hermione', imageURL: 'images/hermione.png'}),
-    new models.GoodGuy({name:'Hagrid', imageURL: 'images/hagrid.png'}),
-    new models.GoodGuy({name:'Neville', imageURL: 'images/neville.png'}),
-    new models.GoodGuy({name:'Professor Dumbledore', imageURL: 'images/dumbledore.png'}),
+    new models.GoodGuy({name:'Harry', imageURL: 'images/harry.png', description: 'The boy who lived!'}),
+    new models.GoodGuy({name:'Hermione', imageURL: 'images/hermione.png', description: 'The smart Mudblodd'}),
+    new models.GoodGuy({name:'Hagrid', imageURL: 'images/hagrid.png', description: 'The gamekeeper'}),
+    new models.GoodGuy({name:'Neville', imageURL: 'images/neville.png', description: 'The surprise'}),
+    new models.GoodGuy({name:'Professor Dumbledore', imageURL: 'images/dumbledore.png', description: 'The great'}),
   ];
 
   var badGuysArray = [
@@ -30,6 +31,9 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
+  var goodGuysObject = {
+    'goodGuysArray': goodGuysArray
+  };
 
   setTimeout(fade_out, 500);
 
@@ -45,9 +49,11 @@ $(function(){
   //#####################################################################
   //Start Screen
   //#####################################################################
-
+  $('.good-guys-list').html(listTemplate(goodGuysObject));
   $('.good-guy').click(function(event){
     event.preventDefault();
+    $(this).css('border', '1px solid white');
+    $(this).siblings().css({'border' : '1px solid rgba(0,0,0,0)'});
     var characterName = $(this).data('name');
     userPlayer = _.filter(goodGuysArray, {'name': characterName})[0];
     console.log(userPlayer);
@@ -160,11 +166,24 @@ $(function(){
     $(this).hide();
   }
 
+  var thisClicked;
+
   function changeCharacter(){
     $('#start-game').hide();
     $('#select-button').show();
-    $('#choose-another-player').show();
-    $(this).hide();
+    $('#choose-another-player').hide();
+    $('.good-guy').click(function(){
+      thisClicked = true;
+    });
+    $('.good-guy').mouseenter(function(){
+      thisClicked = false;
+      $(this).css('border', '1px solid white');  
+    }).mouseleave(function(){
+      if(thisClicked === false){
+        $(this).css('border', '1px solid rgba(0,0,0,0)');
+      }
+    });
+
   }
 
   function checkWin(){
