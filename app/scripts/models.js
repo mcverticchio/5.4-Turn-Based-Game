@@ -68,9 +68,6 @@ function BadGuy(config){
     this.numOfStrongAttackPotion -= 1;
     $('#badGuysHealthBar').css('width', this.health + "%");
     $('#strongAttackSound').get(0).play();
-    $('#.attack').live('click', function () {
-            $(this).prop('disabled', true).delay(6000).prop('disabled', false);
-        });
     console.log("User strong attack potion!");
   };
 }
@@ -90,6 +87,14 @@ BadGuy.prototype.attack = function(character){
   var selectedAttack = availableAttacks[_.random(0,availableAttacks.length-1)];
 
   this[selectedAttack](character);
+    if(selectedAttack === 'opponentStrongAttack'){
+      $('.strongAttacksLeftB').hide();
+      $('.strongAttacksLeftBPhantom').html('Strong Attacks: 0');
+    }
+    if(selectedAttack === 'opponentHealthPotion'){
+      $('.potionsLeftB').hide();
+      $('.potionsLeftBPhantom').html('Increase Health: 0');
+    }
 };
 
 BadGuy.prototype.opponentMinorAttack = function(character){

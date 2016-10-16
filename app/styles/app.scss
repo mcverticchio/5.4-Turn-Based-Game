@@ -10,6 +10,14 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
   src: url('../fonts/ParryHotter.ttf');
 }
 
+@mixin suppliesLeft(){
+  position: absolute;
+  color: orange;
+  font-family: 'HPFont';
+  font-size: 25px;
+  word-spacing: 6px;
+}
+
 @mixin buttonDesign(){
   padding: 10px;
   font-size: 20px;
@@ -124,18 +132,56 @@ html{
 }
 
 .healthBarContainer {
-  width: 150px;
+  min-width: 150px;
   border: 1px solid orange;
   border-radius: 5px;
   margin-top: 30px;
   margin-bottom: 30px;
   height: 25px;
+  display:inline-block;
 }
 
 .healthBar {
   background-color: orange;
   width: 100%;
   height: 100%;
+}
+
+.strongAttacksLeftG,
+.strongAttacksLeftGPhantom {
+  @include suppliesLeft();
+  display:inline-block;
+  top:25px;
+  margin-left:16px;
+}
+
+.potionsLeftG,
+.potionsLeftGPhantom {
+  @include suppliesLeft();
+  margin-left: 165px;
+  top: 65px;
+}
+
+.strongAttacksLeftB,
+.strongAttacksLeftBPhantom {
+  @include suppliesLeft();
+  margin-left: 180px;
+  top: 30px;
+}
+
+.potionsLeftB,
+.potionsLeftBPhantom {
+  @include suppliesLeft();
+  margin-left: 180px;
+  top: 68px;
+}
+
+.js-bad-guy {
+  display: block;
+}
+
+.js-good-guy{
+  display: block;
 }
 
 #replayGame {

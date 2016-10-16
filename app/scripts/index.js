@@ -98,6 +98,8 @@ $(function(){
     event.preventDefault();
     checkWinVar = true;
     if($(this).is('#increase-health')){
+      $('.potionsLeftG').hide();
+      $('.potionsLeftGPhantom').html('Increase Health: 0');
       userPlayer.increaseHealth();
       checkWin();
       if(checkWinVar !== true){return;}
@@ -110,6 +112,8 @@ $(function(){
         $(this).hide();
       }
     }else if ($(this).is('#strong-attack')){
+      $('.strongAttacksLeftG').hide();
+      $('.strongAttacksLeftGPhantom').html('Strong Attacks: 0');
       opponentPlayer.decreaseHealthStrong();
       userPlayer.strongAttack();
       checkWin();
