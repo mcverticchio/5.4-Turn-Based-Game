@@ -17,30 +17,20 @@ $(function(){
   ];
 
   var badGuysArray = [
-    new models.BadGuy({name:'Clown', imageURL: 'images/clown.jpg'}),
-    new models.BadGuy({name:'Zombie', imageURL: 'images/zombies.jpg'}),
-    new models.BadGuy({name:'Werewolf', imageURL: 'images/werewolf.jpg'}),
-    new models.BadGuy({name:'Dracula', imageURL: 'images/dracula.jpg'}),
-    new models.BadGuy({name:'Ghost', imageURL: 'images/EvilGhost.png'}),
-    new models.BadGuy({name:'Spider', imageURL: 'images/spider.jpg'}),
-    new models.BadGuy({name:'Frankenstein', imageURL: 'images/frankenstein.jpg'}),
-  ];
-
-  var randomBackground;
-
-  var backgrounds = [
-    ({imageURL: 'http://2.bp.blogspot.com/-8xufGJljK4Q/TokaX6U_edI/AAAAAAAAAyY/hJkLAAodTVs/s1600/cobweb-wallpaper-7-731096.jpg'}),
-    ({imageURL: 'https://s-media-cache-ak0.pinimg.com/originals/d1/b6/13/d1b613129846bf595ffe5b5a1bd767d9.jpg'}),
-    ({imageURL: 'http://img02.deviantart.net/d273/i/2013/311/1/1/pig_cemetery_background_by_riverkpocc-d6tcm33.png'}),
-    ({imageURL: 'http://img11.deviantart.net/9f0c/i/2012/352/c/a/laboratory__animation_bg_by_zerahoc-d5of62p.png'}),
-    ({imageURL: 'http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg'})
+    new models.BadGuy({name:'Clown', imageURL: 'images/clown.jpg', backgroundImageURL: 'http://i.ytimg.com/vi/lST0UVQaaXI/maxresdefault.jpg'}),
+    new models.BadGuy({name:'Zombie', imageURL: 'images/zombies.jpg', backgroundImageURL: 'http://il3.picdn.net/shutterstock/videos/2683964/thumb/1.jpg'}),
+    new models.BadGuy({name:'Werewolf', imageURL: 'images/werewolf.jpg', backgroundImageURL: 'https://i.ytimg.com/vi/uBjbe3UBg6U/maxresdefault.jpg'}),
+    new models.BadGuy({name:'Dracula', imageURL: 'images/dracula.jpg', backgroundImageURL: 'http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg'}),
+    new models.BadGuy({name:'Ghost', imageURL: 'images/EvilGhost.png', backgroundImageURL: 'http://pre04.deviantart.net/2ff8/th/pre/i/2012/338/c/8/free_background_haunted_series_by_h_stock-d5n0xc1.jpg'}),
+    new models.BadGuy({name:'Spider', imageURL: 'images/spider.jpg', backgroundImageURL: 'http://2.bp.blogspot.com/-8xufGJljK4Q/TokaX6U_edI/AAAAAAAAAyY/hJkLAAodTVs/s1600/cobweb-wallpaper-7-731096.jpg'}),
+    new models.BadGuy({name:'Frankenstein', imageURL: 'images/frankenstein.jpg', backgroundImageURL: 'http://ksean.com/blog/wp-content/uploads/2010/08/haunted-house-VizDev-copy.jpg'}),
   ];
 
 //#####################################################################
 //Begin game logic
 //#####################################################################
 
-  setTimeout(fade_out, 1000);
+  setTimeout(fade_out, 5000);
 
   function fade_out() {
     $(".openingScreen").fadeOut().empty();
@@ -144,40 +134,12 @@ $(function(){
   function playingScreen(){
     pickOpponent();
     $(".selectionScreen").fadeOut().empty();
+    $('.fightScreen').css('background-image', opponentPlayer.backgroundImageURL);
     $(".fightScreen").show();
     $('.js-badGuysArray').html(badGuysTemplate(opponentPlayer));
     $('.js-goodGuysArray').html(goodGuysTemplate(userPlayer));
-      // if(opponentPlayer === badGuysArray[0]){
-      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
-      //   $(".fightScreen").show();
-      // }
-      // if(opponentPlayer === badGuysArray[1]){
-      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
-      // }
-      // if(opponentPlayer === badGuysArray[2]){
-      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
-      // }
-      // if(opponentPlayer === badGuysArray[3]){
-      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
-      // }
-      // if(opponentPlayer === badGuysArray[4]){
-      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
-      // }
-      // if(opponentPlayer === badGuysArray[5]){
-      //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
-      // }
-      // else{
-      //   alert('no luck');
-      // }
     console.log(opponentPlayer);
   }
-
-  // function showFightScreen (){
-  //   randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
-  //   $(".fightScreen").css("background", "randomBackground")
-  //   $(".fightScreen").show()
-  // }
-
 
   function showStartButtons(){
     $('#start-game').show();

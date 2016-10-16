@@ -30,6 +30,10 @@ function Character(config){
 function GoodGuy(config){
   Character.call(this, config);
   this.isGood = true;
+  this.decreaseHealth = function(){
+    this.health -= 10;
+    $('#goodGuysHealthBar').css('width', this.health + "%");
+  };
 }
 
 GoodGuy.prototype = new Character();
@@ -41,6 +45,10 @@ GoodGuy.prototype = new Character();
 function BadGuy(config){
   Character.call(this, config);
   this.isGood = false;
+  this.decreaseHealth = function(){
+    this.health -= 10;
+    $('#badGuysHealthBar').css('width', this.health + "%");
+  };
 }
 
 BadGuy.prototype = new Character();

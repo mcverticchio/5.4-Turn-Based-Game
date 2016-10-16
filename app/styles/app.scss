@@ -6,8 +6,8 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 @font-face{
-  font-family: 'HP';
-  src: url('../fonts/HARRYP_.TTF');
+  font-family: 'HPFont';
+  src: url('../fonts/ParryHotter.ttf');
 }
 
 @mixin buttonDesign(){
@@ -47,7 +47,7 @@ img {
 h1{
   color: orange;
   text-align: center;
-  font-family: 'HP';
+  font-family: 'HPFont';
   line-height: 5em;
   padding-bottom: 30px;
   // #HP{
@@ -58,10 +58,18 @@ h1{
 html{
   height: 100%;
   body{
-    background-image:url('http://media.harrypotter.bloomsbury.com/rep/g/page-background-shell%20-%202.png');
+    background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
+}
+
+
+.selectionScreen
+    {
+  background-image: url('http://media.harrypotter.bloomsbury.com/rep/g/page-background-shell%20-%202.png');
+  height: 100%;
+  background-size: 100% 100%;
 }
 
 
@@ -102,16 +110,16 @@ html{
 .healthBarContainer {
   width: 150px;
   border: 1px solid orange;
-  padding:10px;
   border-radius: 5px;
   margin-top: 30px;
   margin-bottom: 30px;
+  height: 25px;
 }
 
-.js-badGuyArray {
-  img {
-    width: 30px;
-  }
+.healthBar {
+  background-color: orange;
+  width: 100%;
+  height: 100%;
 }
 
 #replayGame {
