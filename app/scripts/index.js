@@ -50,7 +50,7 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
-  setTimeout(fade_out, 1000);
+  setTimeout(fade_out, 5000);
 
   function fade_out() {
     $(".openingScreen").fadeOut().empty();
