@@ -11,7 +11,7 @@ $(function(){
 
   var goodGuysArray = [
     new models.GoodGuy({name:'Harry', imageURL: 'images/harry.png', description: 'The boy who lived!'}),
-    new models.GoodGuy({name:'Hermione', imageURL: 'images/hermione.png', description: 'The smart Mudblodd'}),
+    new models.GoodGuy({name:'Hermione', imageURL: 'images/hermione.png', description: 'The smart Mudblood'}),
     new models.GoodGuy({name:'Hagrid', imageURL: 'images/hagrid.png', description: 'The gamekeeper'}),
     new models.GoodGuy({name:'Neville', imageURL: 'images/neville.png', description: 'The surprise'}),
     new models.GoodGuy({name:'Professor Dumbledore', imageURL: 'images/dumbledore.png', description: 'The great'}),
@@ -28,20 +28,23 @@ $(function(){
   ];
 
   var backgrounds = [
-    'http://www.salsabo.com/wp-content/uploads/2015/10/124276_1280x720.jpg',
-    'http://img15.deviantart.net/6193/i/2010/311/6/5/silver_doe_harry_potter_7_by_s_im-d32cbyq.jpg',
-    'http://vignette3.wikia.nocookie.net/es.harrypotter/images/a/ac/B4C37M1.jpg/revision/latest?cb=20141008131510',
-    'http://img12.deviantart.net/4925/i/2011/148/3/8/hogwarts_castle_wallpaper_by_hardgamerpt-d3gt1em.jpg',
-    'http://vignette2.wikia.nocookie.net/harrypotter/images/c/c0/QuidditchWorldCup.png/revision/latest?cb=20140329010247'
-  ]
+  'http://www.salsabo.com/wp-content/uploads/2015/10/124276_1280x720.jpg',
+  'http://img15.deviantart.net/6193/i/2010/311/6/5/silver_doe_harry_potter_7_by_s_im-d32cbyq.jpg',
+  'http://vignette3.wikia.nocookie.net/es.harrypotter/images/a/ac/B4C37M1.jpg/revision/latest?cb=20141008131510',
+  'http://img12.deviantart.net/4925/i/2011/148/3/8/hogwarts_castle_wallpaper_by_hardgamerpt-d3gt1em.jpg',
+  'http://vignette2.wikia.nocookie.net/harrypotter/images/c/c0/QuidditchWorldCup.png/revision/latest?cb=20140329010247'
+]
 
-  var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
 
 
 //#####################################################################
 //Begin game logic
 //#####################################################################
 
+  var goodGuysObject = {
+    'goodGuysArray': goodGuysArray
+  };
 
   setTimeout(fade_out, 5000);
 
@@ -161,7 +164,7 @@ $(function(){
   function playingScreen(){
     pickOpponent();
     $(".selectionScreen").fadeOut().empty();
-    $('.fightScreen').css({'background-image': 'url(' + randomBackground + ')', 'background-size': '100% 100%', 'background-repeat': 'none', 'height': '800px'});
+    $('.fightScreen').css({'background-image': 'url(' + randomBackground + ')','background-size': '100% 100%', 'background-repeat': 'none', 'height': '800px'});
     $(".fightScreen").show();
     $('.js-badGuysArray').html(badGuysTemplate(opponentPlayer));
     $('.js-goodGuysArray').html(goodGuysTemplate(userPlayer));
