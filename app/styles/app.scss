@@ -5,6 +5,11 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 // Import Bootstrap
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
+@font-face{
+  font-family: 'HP';
+  src: url('../fonts/HARRYP_.TTF');
+}
+
 @mixin buttonDesign(){
   padding: 10px;
   font-size: 20px;
@@ -42,7 +47,7 @@ img {
 h1{
   color: orange;
   text-align: center;
-  font-family: 'Bungee Shade';
+  font-family: 'HP';
   line-height: 5em;
   padding-bottom: 30px;
   // #HP{
@@ -94,6 +99,20 @@ html{
   @include buttonDesign();
 }
 
+.healthBarContainer {
+  width: 150px;
+  border: 1px solid orange;
+  padding:10px;
+  border-radius: 5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.js-badGuyArray {
+  img {
+    width: 30px;
+  }
+}
 
 #replayGame {
   @include buttonDesign();

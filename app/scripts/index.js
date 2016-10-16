@@ -1,7 +1,8 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var models = require('./models');
-var listTemplate = require('../templates/listTemplate.hbs');
+var goodGuysTemplate = require('../templates/goodGuysTemplate.hbs');
+var badGuysTemplate= require('../templates/badGuysTemplate.hbs');
 
 $(function(){
   var userPlayer,
@@ -16,25 +17,14 @@ $(function(){
   ];
 
   var badGuysArray = [
-    new models.BadGuy({name:'Clown', imageURL: 'http://vectortoons.com/wp-content/uploads/2015/08/creepy-clown-collection-3-009-270x400.jpg'}),
-    new models.BadGuy({name:'Zombie', imageURL: 'http://onefreemindblog.files.wordpress.com/2013/05/18870965-cartoon-illustration-of-a-ghoulish-undid-green-zombie-in-tattered-clothing-with-big-eye-isolated-on.jpg'}),
-    new models.BadGuy({name:'Werewolf', imageURL: 'http://vignette3.wikia.nocookie.net/batman/images/1/10/Anthony_Romulus.jpg/revision/latest?cb=20110803232007'}),
-    new models.BadGuy({name:'Dracula', imageURL: 'http://ep.yimg.com/ay/incrediblegifts/cartoon-dracula-cardboard-cutout-life-size-standup-10.jpg'}),
+    new models.BadGuy({name:'Clown', imageURL: 'images/clown.jpg'}),
+    new models.BadGuy({name:'Zombie', imageURL: 'images/zombies.jpg'}),
+    new models.BadGuy({name:'Werewolf', imageURL: 'images/werewolf.jpg'}),
+    new models.BadGuy({name:'Dracula', imageURL: 'images/dracula.jpg'}),
     new models.BadGuy({name:'Ghost', imageURL: 'images/EvilGhost.png'}),
-    new models.BadGuy({name:'Spider', imageURL: 'http://cliparts.co/cliparts/di4/oko/di4okoXbT.jpg'}),
-    new models.BadGuy({name:'Frankenstein', imageURL: 'http://clipartix.com/wp-content/uploads/2016/10/Frankenstein-cartoon-images-clip-art.jpg'}),
+    new models.BadGuy({name:'Spider', imageURL: 'images/spider.jpg'}),
+    new models.BadGuy({name:'Frankenstein', imageURL: 'images/frankenstein.jpg'}),
   ];
-
-  var context = {
-   'badGuysArray' : badGuysArray
- }
-    $('.js-badGuysArray').html(listTemplate(context));
-
-  var secondContext ={
-    'goodGuysArray': goodGuysArray
-  }
-    $('.js-goodGuysArray').html(listTemplate(secondContext)).show();
-
 
   var randomBackground;
 
@@ -50,7 +40,7 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
-  setTimeout(fade_out, 5000);
+  setTimeout(fade_out, 1000);
 
   function fade_out() {
     $(".openingScreen").fadeOut().empty();
@@ -152,11 +142,11 @@ $(function(){
   }
 
   function playingScreen(){
-    // alert('playingScreen has been triggered.');
     pickOpponent();
     $(".selectionScreen").fadeOut().empty();
-    showFightScreen();
-    // $(".fightScreen").show();
+    $(".fightScreen").show();
+    $('.js-badGuysArray').html(badGuysTemplate(opponentPlayer));
+    $('.js-goodGuysArray').html(goodGuysTemplate(userPlayer));
       // if(opponentPlayer === badGuysArray[0]){
       //   $(".fightSreen").css("background", "url('http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg')")
       //   $(".fightScreen").show();
@@ -182,11 +172,11 @@ $(function(){
     console.log(opponentPlayer);
   }
 
-  function showFightScreen (){
-    randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
-    $(".fightScreen").css("background", "randomBackground")
-    $(".fightScreen").show()
-  }
+  // function showFightScreen (){
+  //   randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+  //   $(".fightScreen").css("background", "randomBackground")
+  //   $(".fightScreen").show()
+  // }
 
 
   function showStartButtons(){
