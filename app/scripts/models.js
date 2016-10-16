@@ -4,21 +4,6 @@ var _ = require('underscore');
 function Character(config){
   $.extend(this, config);
   this.health = 100;
-  this.increaseHealth = function(){
-    this.health += 10;
-    this.numOfHealthPotion -= 1;
-    console.log("User increased health!");
-  };
-  this.decreaseHealth = function(){
-    this.health -= 10;
-  };
-  this.decreaseHealthStrong = function(){
-    this.health -= 30;
-  };
-  this.strongAttack = function(){
-    this.numOfStrongAttackPotion -= 1;
-    console.log("User strong attack potion!");
-  };
   this.numOfHealthPotion = 1;
   this.numOfStrongAttackPotion = 1;
 }
@@ -34,6 +19,21 @@ function GoodGuy(config){
     this.health -= 10;
     $('#goodGuysHealthBar').css('width', this.health + "%");
   };
+  this.increaseHealth = function(){
+    this.health += 10;
+    this.numOfHealthPotion -= 1;
+    $('#goodGuysHealthBar').css('width', this.health + "%");
+    console.log("User increased health!");
+  };
+  this.decreaseHealthStrong = function(){
+    this.health -= 30;
+    $('#goodGuysHealthBar').css('width', this.health + "%");
+  };
+  this.strongAttack = function(){
+    this.numOfStrongAttackPotion -= 1;
+    $('#goodGuysHealthBar').css('width', this.health + "%");
+    console.log("User strong attack potion!");
+  };
 }
 
 GoodGuy.prototype = new Character();
@@ -48,6 +48,20 @@ function BadGuy(config){
   this.decreaseHealth = function(){
     this.health -= 10;
     $('#badGuysHealthBar').css('width', this.health + "%");
+  };
+  this.increaseHealth = function(){
+    this.health += 10;
+    this.numOfHealthPotion -= 1;
+    $('#badGuysHealthBar').css('width', this.health + "%");
+  };
+  this.decreaseHealthStrong = function(){
+    this.health -= 30;
+    $('#badGuysHealthBar').css('width', this.health + "%");
+  };
+  this.strongAttack = function(){
+    this.numOfStrongAttackPotion -= 1;
+    $('#badGuysHealthBar').css('width', this.health + "%");
+    console.log("User strong attack potion!");
   };
 }
 
