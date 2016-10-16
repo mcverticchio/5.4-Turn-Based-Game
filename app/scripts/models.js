@@ -18,11 +18,14 @@ function GoodGuy(config){
   this.decreaseHealth = function(){
     this.health -= 10;
     $('#goodGuysHealthBar').css('width', this.health + "%");
+    $('#zapSound').get(0).play();
   };
   this.increaseHealth = function(){
     this.health += 10;
     this.numOfHealthPotion -= 1;
     $('#goodGuysHealthBar').css('width', this.health + "%");
+    $('#healSound').get(0).play();
+    console.log($('#healSound'));
     console.log("User increased health!");
   };
   this.decreaseHealthStrong = function(){
@@ -48,11 +51,13 @@ function BadGuy(config){
   this.decreaseHealth = function(){
     this.health -= 10;
     $('#badGuysHealthBar').css('width', this.health + "%");
+    $('#zapSound').get(0).play();
   };
   this.increaseHealth = function(){
     this.health += 10;
     this.numOfHealthPotion -= 1;
     $('#badGuysHealthBar').css('width', this.health + "%");
+    $('#healSound').get(0).play();
   };
   this.decreaseHealthStrong = function(){
     this.health -= 30;

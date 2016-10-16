@@ -76,13 +76,10 @@ $(function(){
   var checkWinVar;
   $('#attack').on('click', function(event){
     event.preventDefault();
-    $('#zapSound').get(0).play();
-    console.log($('#zapSound'));
     checkWinVar = true;
     opponentPlayer.decreaseHealth();
     checkWin();
     if(checkWinVar !== true){return;}
-
     window.setTimeout(function(){
     opponentPlayer.attack(userPlayer);
     console.log(userPlayer);
