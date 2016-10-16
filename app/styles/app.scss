@@ -72,6 +72,22 @@ html{
   background-size: 100% 100%;
 }
 
+#carousel-hp-characters {
+  width: 65%;
+  margin: 0 auto;
+
+  .item {
+    height: 180px;
+  }
+
+  img {
+    margin: 0 auto;
+  }
+
+  .carousel-caption {
+    bottom: 20px;
+  }
+}
 
 #select-button{
   @include buttonDesign();
