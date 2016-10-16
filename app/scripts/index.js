@@ -30,7 +30,7 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
-  setTimeout(fade_out, 2000);
+  setTimeout(fade_out, 5000);
 
   function fade_out() {
     $(".openingScreen").fadeOut().empty();
@@ -76,6 +76,8 @@ $(function(){
   var checkWinVar;
   $('#attack').on('click', function(event){
     event.preventDefault();
+    $('#zapSound').get(0).play();
+    console.log($('#zapSound'));
     checkWinVar = true;
     opponentPlayer.decreaseHealth();
     checkWin();
