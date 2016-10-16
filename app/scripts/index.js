@@ -30,7 +30,9 @@ $(function(){
 //Begin game logic
 //#####################################################################
 
+
   setTimeout(fade_out, 500);
+
 
   function fade_out() {
     $(".openingScreen").fadeOut().empty();
@@ -76,6 +78,8 @@ $(function(){
   var checkWinVar;
   $('#attack').on('click', function(event){
     event.preventDefault();
+    $(this).prop('disabled', true);
+    console.log("This is disabled");
     checkWinVar = true;
     opponentPlayer.decreaseHealth();
     checkWin();
@@ -85,6 +89,8 @@ $(function(){
     console.log(userPlayer);
     console.log(opponentPlayer);
     checkWin()}, 2000)
+    // $('#attack').on('click');
+    $(this).prop('disabled', false);
   });
 
 
@@ -112,7 +118,7 @@ $(function(){
       opponentPlayer.attack(userPlayer);
       console.log(userPlayer);
       console.log(opponentPlayer);
-      checkWin()}, 2000);
+      checkWin()}, 5000);
       if(userPlayer.numOfStrongAttackPotion < 1){
         $(this).hide();
       }

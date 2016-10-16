@@ -35,6 +35,7 @@ function GoodGuy(config){
   this.strongAttack = function(){
     this.numOfStrongAttackPotion -= 1;
     $('#goodGuysHealthBar').css('width', this.health + "%");
+    $('#strongAttackSound').get(0).play();
     console.log("User strong attack potion!");
   };
 }
@@ -66,6 +67,10 @@ function BadGuy(config){
   this.strongAttack = function(){
     this.numOfStrongAttackPotion -= 1;
     $('#badGuysHealthBar').css('width', this.health + "%");
+    $('#strongAttackSound').get(0).play();
+    $('#.attack').live('click', function () {
+            $(this).prop('disabled', true).delay(6000).prop('disabled', false);
+        });
     console.log("User strong attack potion!");
   };
 }
