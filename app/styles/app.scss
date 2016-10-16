@@ -46,7 +46,7 @@ $buttonGradientBottom: #e6f0ff;
 
 
 .openingScreen{
-  background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg') no-repeat center center fixed;    background-size: cover;
+  background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg') no-repeat center center fixed;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   overflow: none;
@@ -58,15 +58,12 @@ h1{
   font-family: 'HPFont';
   line-height: 5em;
   padding-bottom: 30px;
-  // #HP{
-  // font-family: 'Orbitron', sans-serif;
-  // }
 }
 
 html{
   height: 100%;
   body{
-    background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg');
+    // background: url('http://i764.photobucket.com/albums/xx286/lightsatnight/harry-potter-14.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -137,6 +134,8 @@ html{
 #start-game{
   margin-left: 537px;
 }
+
+
 
 #attack{
   @include buttonDesign();

@@ -18,22 +18,30 @@ $(function(){
   ];
 
   var badGuysArray = [
-    new models.BadGuy({name:'Clown', imageURL: 'images/clown.gif', backgroundImageURL: 'http://i.ytimg.com/vi/lST0UVQaaXI/maxresdefault.jpg'}),
-    new models.BadGuy({name:'Zombie', imageURL: 'images/zombie.gif', backgroundImageURL: 'http://il3.picdn.net/shutterstock/videos/2683964/thumb/1.jpg'}),
-    new models.BadGuy({name:'Werewolf', imageURL: 'images/werewolf.gif', backgroundImageURL: 'https://i.ytimg.com/vi/uBjbe3UBg6U/maxresdefault.jpg'}),
-    new models.BadGuy({name:'Dracula', imageURL: 'images/dracula.gif', backgroundImageURL: 'http://cdn.wallpapersafari.com/41/40/iNAyaW.jpg'}),
-    new models.BadGuy({name:'Ghost', imageURL: 'images/EvilGhost.gif', backgroundImageURL: 'http://pre04.deviantart.net/2ff8/th/pre/i/2012/338/c/8/free_background_haunted_series_by_h_stock-d5n0xc1.jpg'}),
-    new models.BadGuy({name:'Spider', imageURL: 'images/spider.gif', backgroundImageURL: 'http://2.bp.blogspot.com/-8xufGJljK4Q/TokaX6U_edI/AAAAAAAAAyY/hJkLAAodTVs/s1600/cobweb-wallpaper-7-731096.jpg'}),
-    new models.BadGuy({name:'Frankenstein', imageURL: 'images/frankenstein.gif', backgroundImageURL: 'http://ksean.com/blog/wp-content/uploads/2010/08/haunted-house-VizDev-copy.jpg'}),
+    new models.BadGuy({name:'Clown', imageURL: 'images/clown.gif'}),
+    new models.BadGuy({name:'Zombie', imageURL: 'images/zombie.gif'}),
+    new models.BadGuy({name:'Werewolf', imageURL: 'images/werewolf.gif'}),
+    new models.BadGuy({name:'Dracula', imageURL: 'images/dracula.gif'}),
+    new models.BadGuy({name:'Ghost', imageURL: 'images/EvilGhost.gif'}),
+    new models.BadGuy({name:'Spider', imageURL: 'images/spider.gif'}),
+    new models.BadGuy({name:'Frankenstein', imageURL: 'images/frankenstein.gif'}),
   ];
+
+  var backgrounds = [
+    'http://www.salsabo.com/wp-content/uploads/2015/10/124276_1280x720.jpg',
+    'http://img15.deviantart.net/6193/i/2010/311/6/5/silver_doe_harry_potter_7_by_s_im-d32cbyq.jpg',
+    'http://vignette3.wikia.nocookie.net/es.harrypotter/images/a/ac/B4C37M1.jpg/revision/latest?cb=20141008131510',
+    'http://img12.deviantart.net/4925/i/2011/148/3/8/hogwarts_castle_wallpaper_by_hardgamerpt-d3gt1em.jpg',
+    'http://vignette2.wikia.nocookie.net/harrypotter/images/c/c0/QuidditchWorldCup.png/revision/latest?cb=20140329010247'
+  ]
+
+  var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+
 
 //#####################################################################
 //Begin game logic
 //#####################################################################
 
-  var goodGuysObject = {
-    'goodGuysArray': goodGuysArray
-  };
 
   setTimeout(fade_out, 5000);
 
@@ -153,7 +161,7 @@ $(function(){
   function playingScreen(){
     pickOpponent();
     $(".selectionScreen").fadeOut().empty();
-    $('.fightScreen').css('background-image', opponentPlayer.backgroundImageURL);
+    $('.fightScreen').css({'background-image': 'url(' + randomBackground + ')', 'background-size': '100% 100%', 'background-repeat': 'none', 'height': '800px'});
     $(".fightScreen").show();
     $('.js-badGuysArray').html(badGuysTemplate(opponentPlayer));
     $('.js-goodGuysArray').html(goodGuysTemplate(userPlayer));
