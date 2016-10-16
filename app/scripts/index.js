@@ -35,7 +35,7 @@ $(function(){
     'goodGuysArray': goodGuysArray
   };
 
-  setTimeout(fade_out, 500);
+  setTimeout(fade_out, 5000);
 
 
   function fade_out() {
@@ -177,7 +177,7 @@ $(function(){
     });
     $('.good-guy').mouseenter(function(){
       thisClicked = false;
-      $(this).css('border', '1px solid white');  
+      $(this).css('border', '1px solid white');
     }).mouseleave(function(){
       if(thisClicked === false){
         $(this).css('border', '1px solid rgba(0,0,0,0)');
