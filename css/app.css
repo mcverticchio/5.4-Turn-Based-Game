@@ -5814,7 +5814,8 @@ html {
 
 .good-guys-list li:hover {
   border: 1px solid white;
-  border-radius: 3px; }
+  border-radius: 3px;
+  cursor: pointer; }
 
 #select-button {
   padding: 10px;
@@ -5866,7 +5867,9 @@ html {
   border-radius: 5px;
   background: -webkit-linear-gradient(#e6f0ff, #002966);
   background: linear-gradient(#e6f0ff, #002966);
-  box-shadow: 2px 2px 2px #888888; }
+  box-shadow: 2px 2px 2px #888888;
+  margin-left: 40px;
+  margin-top: 50px; }
 
 #strong-attack {
   padding: 10px;
@@ -5948,13 +5951,43 @@ html {
   margin-left: 180px;
   top: 68px; }
 
-.js-bad-guy {
-  display: block; }
-
 .js-good-guy {
-  display: block; }
+  display: block;
+  margin-top: 250px;
+  margin-left: 245px; }
 
-#replayGame {
+.js-bad-guy {
+  display: block;
+  margin-left: 100px;
+  margin-top: 50px; }
+
+.minorComment,
+.potionComment,
+.strongComment {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  width: 200px;
+  border-radius: 5px;
+  background: orange;
+  bottom: 150px;
+  border: 1px solid orange;
+  font-family: 'HPFont';
+  font-size: 20px;
+  text-align: center; }
+
+.minorComment::before,
+.potionComment::before,
+.strongComment::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 10px solid transparent;
+  border-right-color: orange;
+  left: -21;
+  bottom: 20; }
+
+.replay-game {
   padding: 10px;
   font-size: 20px;
   font-family: 'Orbitron', sans-serif;
