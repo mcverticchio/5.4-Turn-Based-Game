@@ -92,7 +92,6 @@ $(function(){
   //#####################################################################
 
   var checkWinVar;
-
   $('#attack').on('click', function(event){
     event.preventDefault();
     $(this).prop('disabled', true);
@@ -199,14 +198,14 @@ $(function(){
 
   function checkWin(){
     if(userPlayer.health <= 0){
-      alert('You lose!');
       checkWinVar = false;
-      $('#replayGame').show();
+      $('.playing-area').hide();
+      $('#lose-screen').show();
       return;
     }else if(opponentPlayer.health <= 0){
-      alert('You win!');
       checkWinVar = false;
-      $('#replayGame').show();
+      $('.playing-area').hide();
+      $('#win-screen').show();
       return;
     }
   }

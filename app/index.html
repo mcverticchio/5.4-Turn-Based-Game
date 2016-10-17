@@ -44,46 +44,46 @@
 </div>
 
 
-<div class="fightScreen" style="display: none">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-md-6">
-           <div class="js-goodGuysArray">
-        <!-- Populates from javascript -->
-          </div>
-
-          <div>
-            <audio src="sounds/zap_01.mp3" id="zapSound"></audio>
-            <audio src="sounds/heal_01.mp3" id="healSound"></audio>
-            <audio src="sounds/strong-attack.mp3" id="strongAttackSound"></audio>
-            <button type="button" id="attack">Attack</button>
-            <button type="button" id="strong-attack" class="potion-buttons">Strong Attack</button>
-            <button type="button" id="increase-health" class="potion-buttons">Increase Health</button>
-          </div>
-
+<div class="fightScreen playing-area" style="display: none">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="js-goodGuysArray">
+          <!-- Populates from javascript -->
         </div>
-
-        <div class="col-md-6">
-        <div class="js-badGuysArray">
-        <!-- Populates from javascript -->
-        </div>
-        </div>
-
-
         <div>
-          <button type="button" id="replayGame" style="display:none">REPLAY</button>
+          <audio src="sounds/zap_01.mp3" id="zapSound"></audio>
+          <audio src="sounds/heal_01.mp3" id="healSound"></audio>
+          <audio src="sounds/strong-attack.mp3" id="strongAttackSound"></audio>
+          <button type="button" id="attack">Attack</button>
+          <button type="button" id="strong-attack" class="potion-buttons">Strong Attack</button>
+          <button type="button" id="increase-health" class="potion-buttons">Increase Health</button>
         </div>
-
+      </div>
+      <div class="col-md-6">
+        <div class="js-badGuysArray">
+          <!-- Populates from javascript -->
+        </div>
       </div>
     </div>
+  </div>
+</div>
+<div id="win-screen" style="display: none">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Congratulations! You've defeated the monsters!</h1>
+    </div>
+  </div>
+</div>
+<div id="lose-screen" style="display: none">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Oh no! The monsters are going to overrun Hogwarts!</h1>
+      <button type="button" id="replayGame">Choose Another Character</button>
+    </div>
+  </div>
+</div>
 
     <script src="js/bundle.js"></script>
-    <script type = "text/javascript"
-     src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-    </script>
-    <script type = "text/javascript"
-     src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">
-    </script>
   </body>
 </html>
