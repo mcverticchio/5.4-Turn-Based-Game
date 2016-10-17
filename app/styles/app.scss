@@ -137,6 +137,12 @@ html{
   margin-left: 537px;
 }
 
+.fightScreen {
+background-image: url('http://media.harrypotter.bloomsbury.com/rep/g/page-background-shell%20-%202.png');
+height: 100%;
+background-size: 100% 100%;
+}
+
 #attack{
   @include buttonDesign();
 }

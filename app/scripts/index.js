@@ -27,15 +27,14 @@ $(function(){
     new models.BadGuy({name:'Frankenstein', imageURL: 'images/frankenstein.gif'}),
   ];
 
-  var backgrounds = [
-  'http://www.salsabo.com/wp-content/uploads/2015/10/124276_1280x720.jpg',
-  'http://img15.deviantart.net/6193/i/2010/311/6/5/silver_doe_harry_potter_7_by_s_im-d32cbyq.jpg',
-  'http://vignette3.wikia.nocookie.net/es.harrypotter/images/a/ac/B4C37M1.jpg/revision/latest?cb=20141008131510',
-  'http://img12.deviantart.net/4925/i/2011/148/3/8/hogwarts_castle_wallpaper_by_hardgamerpt-d3gt1em.jpg',
-  'http://vignette2.wikia.nocookie.net/harrypotter/images/c/c0/QuidditchWorldCup.png/revision/latest?cb=20140329010247'
-];
-
-var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+//   var backgrounds = [
+//   'http://i.dailymail.co.uk/i/pix/2016/02/26/10/02E5DDD20000044D-3465242-image-a-15_1456481358519.jpg',
+//   'http://www.salsabo.com/wp-content/uploads/2015/10/124276_1280x720.jpg',
+//   'https://typeset-beta.imgix.net/rehost/2016/9/13/70371c31-7d4c-4b46-839f-3225d06f8f99.jpg',
+//   'http://vignette4.wikia.nocookie.net/harrypotter/images/7/78/Halloween1991.jpg/revision/latest?cb=20100121123848&path-prefix=fr',
+// ]
+//
+// var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
 
 
 //#####################################################################
@@ -46,7 +45,7 @@ var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)]
     'goodGuysArray': goodGuysArray
   };
 
-  setTimeout(fade_out, 5000);
+  setTimeout(fade_out, 1000);
 
 
   function fade_out() {
@@ -164,8 +163,8 @@ var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)]
 
   function playingScreen(){
     pickOpponent();
-    $(".selectionScreen").fadeOut().empty();
-    $('.fightScreen').css({'background-image': 'url(' + randomBackground + ')','background-size': '100% 100%', 'background-repeat': 'none', 'height': '800px'});
+    $(".selectionScreen").hide();
+    // $('.fightScreen').css({'background-image': 'url(' + randomBackground + ')','background-size': '100% 100%', 'background-repeat': 'none', 'height': '800px'});
     $(".fightScreen").show();
     $('.js-badGuysArray').html(badGuysTemplate(opponentPlayer));
     $('.js-goodGuysArray').html(goodGuysTemplate(userPlayer));
