@@ -208,12 +208,12 @@ $(function(){
   function checkWin(){
     if(userPlayer.health <= 0){
       checkWinVar = false;
-      $('.playing-area').hide();
+      $('.fightScreen').hide();
       $('#lose-screen').show();
       return;
     }else if(opponentPlayer.health <= 0){
       checkWinVar = false;
-      $('.playing-area').hide();
+      $('.fightScreen').hide();
       $('#win-screen').show();
       return;
     }
