@@ -145,7 +145,7 @@ $(function(){
     }
   });
 
-  $('#replayGame').on('click', function(event){
+  $('.replay-game').on('click', function(event){
     event.preventDefault();
     $(".fightScreen").hide();
     location.reload();
