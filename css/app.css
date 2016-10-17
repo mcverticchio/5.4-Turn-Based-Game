@@ -5780,6 +5780,19 @@ h1 {
   line-height: 5em;
   padding-bottom: 30px; }
 
+.startButton {
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  color: orange;
+  border: 1px solid #e6f0ff;
+  border-radius: 5px;
+  background: -webkit-linear-gradient(#e6f0ff, #002966);
+  background: linear-gradient(#e6f0ff, #002966);
+  box-shadow: 2px 2px 2px #888888;
+  margin-left: 500px;
+  margin-bottom: 30px; }
+
 html {
   height: 100%; }
   html body {
