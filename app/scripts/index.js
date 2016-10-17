@@ -95,13 +95,16 @@ $(function(){
   $('#attack').on('click', function(event){
     event.preventDefault();
     $(this).prop('disabled', true);
-    console.log("This is disabled");
+    // console.log("This is disabled");
     checkWinVar = true;
     opponentPlayer.decreaseHealth();
+    $('.minorComment').show();
+    $('.minorComment').html('Expelliarmus!');
     checkWin();
     if(checkWinVar !== true){return;}
     window.setTimeout(function(){
     opponentPlayer.attack(userPlayer);
+    $('.minorComment').hide();
     console.log(userPlayer);
     console.log(opponentPlayer);
     checkWin();}, 2000);
@@ -116,11 +119,14 @@ $(function(){
     if($(this).is('#increase-health')){
       $('.potionsLeftG').hide();
       $('.potionsLeftGPhantom').html('Increase Health: 0');
+      $('.potionComment').show();
+      $('.potionComment').html('Health Elixer. Increased life span by 10%');
       userPlayer.increaseHealth();
       checkWin();
       if(checkWinVar !== true){return;}
       window.setTimeout(function(){
       opponentPlayer.attack(userPlayer);
+      $('.potionComment').hide();
       console.log(userPlayer);
       console.log(opponentPlayer);
       checkWin();}, 2000);
@@ -130,12 +136,15 @@ $(function(){
     }else if ($(this).is('#strong-attack')){
       $('.strongAttacksLeftG').hide();
       $('.strongAttacksLeftGPhantom').html('Strong Attacks: 0');
+      $('.strongComment').show();
+      $('.strongComment').html('Expecto Patronum!');
       opponentPlayer.decreaseHealthStrong();
       userPlayer.strongAttack();
       checkWin();
       if(checkWinVar !== true){return;}
       window.setTimeout(function(){
       opponentPlayer.attack(userPlayer);
+      $('.strongComment').hide();
       console.log(userPlayer);
       console.log(opponentPlayer);
       checkWin();}, 5000);

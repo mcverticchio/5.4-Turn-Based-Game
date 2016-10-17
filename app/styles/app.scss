@@ -9,6 +9,20 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
   src: url('../fonts/ParryHotter.ttf');
 }
 
+@mixin comments(){
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  width: 200px;
+  border-radius: 5px;
+  background: orange;
+  bottom: 150px;
+  border: 1px solid orange;
+  font-family: 'HPFont';
+  font-size: 20px;
+  text-align: center;
+}
+
 @mixin suppliesLeft(){
   position: absolute;
   color: orange;
@@ -217,7 +231,24 @@ background-size: 100% 100%;
   margin-top: 50px;
 }
 
-.replay-game {
+.minorComment,
+.potionComment,
+.strongComment {
+  @include comments();
+}
+.minorComment::before,
+.potionComment::before,
+.strongComment::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 10px solid transparent;
+  border-right-color: orange;
+  left: -21;
+  bottom: 20;
+}
+
+.replayGame {
   @include buttonDesign();
   margin-top: 200px;
   margin-left: 500px;
