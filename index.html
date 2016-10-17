@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>5 4 Turn Based Game</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Orbitron" rel="stylesheet">
+  </head>
+  <body>
+
+<div class="openingScreen">
+    <div class="container">
+      <div class="row">
+        <audio src="sounds/HPMusic.mp3" id="HPMusic"></audio>
+        <div class="col-md-12">
+          <h1 id="HP">The Wizarding World of Harry Potter</h1>
+          <h1>vs.</h1>
+          <h1>Halloween Villians</h1>
+          <!-- <button id="startGame" type="button" name="button">Start Game!</button> -->
+
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="selectionScreen" style="display: none">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h1>Choose Your Player</h1>
+        <ul class="good-guys-list list-inline">
+          <!-- JS listTemplate generated: To modify see listTemplate.hbs -->
+        </ul>
+
+        <div class="hiddenButtons">
+       <button id="select-button">Select</button>
+       <button id="choose-another-player" class="start-buttons" style="display:none">Choose a different player</button>
+       <button id="start-game" class="start-buttons" style="display:none">Start</button>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="fightScreen playing-area" style="display: none">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="js-goodGuysArray">
+          <!-- Populates from javascript -->
+        </div>
+        <div>
+          <audio src="sounds/zap_01.mp3" id="zapSound"></audio>
+          <audio src="sounds/heal_01.mp3" id="healSound"></audio>
+          <audio src="sounds/strong-attack.mp3" id="strongAttackSound"></audio>
+          <button type="button" id="attack">Attack</button>
+          <button type="button" id="strong-attack" class="potion-buttons">Strong Attack</button>
+          <button type="button" id="increase-health" class="potion-buttons">Increase Health</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="js-badGuysArray">
+          <!-- Populates from javascript -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="win-screen" style="display: none">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Congratulations! You've defeated the monsters!</h1>
+    </div>
+  </div>
+</div>
+<div id="lose-screen" style="display: none">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Oh no! The monsters are going to overrun Hogwarts!</h1>
+      <button type="button" id="replayGame">Choose Another Character</button>
+    </div>
+  </div>
+</div>
+
+    <script src="js/bundle.js"></script>
+  </body>
+</html>
