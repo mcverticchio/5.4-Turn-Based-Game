@@ -75,6 +75,11 @@ h1{
   // font-family: 'Orbitron', sans-serif;
   // }
 }
+.startButton {
+  @include buttonDesign();
+  margin-left: 500px;
+  margin-bottom: 30px;
+}
 
 html{
   height: 100%;

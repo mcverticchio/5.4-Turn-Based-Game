@@ -45,13 +45,11 @@ $(function(){
     'goodGuysArray': goodGuysArray
   };
 
-  setTimeout(fade_out, 1000);
-
-
-  function fade_out() {
-    $(".openingScreen").fadeOut().empty();
-    $(".selectionScreen").show();
-  }
+  $('.startButton').click(function(event){
+    event.preventDefault();
+    $('.openingScreen').fadeOut(1000).empty();
+    $('.selectionScreen').show();
+  })
 
   $('#HPMusic').get(0).play();
 
