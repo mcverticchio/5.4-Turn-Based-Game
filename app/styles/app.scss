@@ -111,6 +111,7 @@ html{
 .good-guys-list li:hover {
     border: 1px solid white;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 #select-button{
@@ -145,6 +146,8 @@ background-size: 100% 100%;
 
 #attack{
   @include buttonDesign();
+  margin-left: 40px;
+  margin-top: 50px;
 }
 #strong-attack{
   @include buttonDesign();
@@ -202,12 +205,16 @@ background-size: 100% 100%;
   top: 68px;
 }
 
-.js-bad-guy {
-  display: block;
-}
-
 .js-good-guy{
   display: block;
+  margin-top: 250px;
+  margin-left: 245px;
+}
+
+.js-bad-guy {
+  display: block;
+  margin-left: 100px;
+  margin-top: 50px;
 }
 
 .replay-game {
