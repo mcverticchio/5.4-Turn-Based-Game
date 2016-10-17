@@ -33,7 +33,7 @@ $(function(){
   'http://vignette3.wikia.nocookie.net/es.harrypotter/images/a/ac/B4C37M1.jpg/revision/latest?cb=20141008131510',
   'http://img12.deviantart.net/4925/i/2011/148/3/8/hogwarts_castle_wallpaper_by_hardgamerpt-d3gt1em.jpg',
   'http://vignette2.wikia.nocookie.net/harrypotter/images/c/c0/QuidditchWorldCup.png/revision/latest?cb=20140329010247'
-]
+];
 
 var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
 
@@ -93,6 +93,7 @@ var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)]
   //#####################################################################
 
   var checkWinVar;
+
   $('#attack').on('click', function(event){
     event.preventDefault();
     $(this).prop('disabled', true);
@@ -105,7 +106,7 @@ var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)]
     opponentPlayer.attack(userPlayer);
     console.log(userPlayer);
     console.log(opponentPlayer);
-    checkWin()}, 2000)
+    checkWin();}, 2000);
     // $('#attack').on('click');
     $(this).prop('disabled', false);
   });
@@ -124,7 +125,7 @@ var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)]
       opponentPlayer.attack(userPlayer);
       console.log(userPlayer);
       console.log(opponentPlayer);
-      checkWin()}, 2000);
+      checkWin();}, 2000);
       if(userPlayer.numOfHealthPotion < 1){
         $(this).hide();
       }
@@ -139,7 +140,7 @@ var randomBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)]
       opponentPlayer.attack(userPlayer);
       console.log(userPlayer);
       console.log(opponentPlayer);
-      checkWin()}, 5000);
+      checkWin();}, 5000);
       if(userPlayer.numOfStrongAttackPotion < 1){
         $(this).hide();
       }

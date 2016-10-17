@@ -19,12 +19,22 @@ function GoodGuy(config){
     this.health -= 10;
     $('#goodGuysHealthBar').css('width', this.health + "%");
     $('#zapSound').get(0).play();
+    $('.js-good-guy').animate({
+      width: '-=40',
+      left: '+=20'
+    }, function(){
+      $(this).animate({
+        width: '+=40',
+        left:'-=20'
+      });
+    });
   };
   this.increaseHealth = function(){
     this.health += 10;
     this.numOfHealthPotion -= 1;
     $('#goodGuysHealthBar').css('width', this.health + "%");
     $('#healSound').get(0).play();
+    $('.js-good-guy').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
     console.log($('#healSound'));
     console.log("User increased health!");
   };
@@ -53,12 +63,22 @@ function BadGuy(config){
     this.health -= 10;
     $('#badGuysHealthBar').css('width', this.health + "%");
     $('#zapSound').get(0).play();
+    $('.js-bad-guy').animate({
+      width: '-=40',
+      left: '+=20'
+    }, function(){
+      $(this).animate({
+        width: '+=40',
+        left:'-=20'
+      });
+    });
   };
   this.increaseHealth = function(){
     this.health += 10;
     this.numOfHealthPotion -= 1;
     $('#badGuysHealthBar').css('width', this.health + "%");
     $('#healSound').get(0).play();
+    $('.js-bad-guy').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
   };
   this.decreaseHealthStrong = function(){
     this.health -= 30;
